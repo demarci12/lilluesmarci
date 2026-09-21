@@ -4,15 +4,6 @@ import Reveal from "@/components/wedding/Reveal";
 import Countdown from "@/components/wedding/Countdown";
 import RsvpPanel from "@/components/wedding/RsvpPanel";
 
-const TIMELINE = [
-  { time: "hamarosan", title: "Szertartás a templomban" },
-  { time: "hamarosan", title: "Fogadás és koktél" },
-  { time: "hamarosan", title: "Vacsora" },
-  { time: "hamarosan", title: "Bál, mulatság" },
-  { time: "hamarosan", title: "Tortavágás" },
-  { time: "hamarosan", title: "Búcsúzás" },
-];
-
 // Guest-facing dress code palette: ivory, sage, olive, caramel, deep caramel.
 const SWATCHES = ["#fcf8ef", "#b8ca9a", "#7c8c5b", "#c2a87a", "#a8834f"];
 
@@ -24,24 +15,23 @@ export default function Home() {
       <EnvelopeHero />
       <Reveal />
 
-      {/* Light painted ground: one backdrop runs behind the first few sections */}
+      {/* Pastel white ground: one backdrop runs behind the first few sections */}
       <div className="win wash">
         <section className="intro" id="varunk">
-          <div className="wrap two">
-            <div className="col-text">
-              <h2 className="script h-script reveal">Kálna, Mátyás malom</h2>
-              <p className="lede reveal">
-                2027. július 10-én, szombaton összeházasodunk, és szeretnénk, ha ezen a napon ott lennél velünk.
-              </p>
-              <Countdown />
-            </div>
-            <div className="col-pic reveal r">
-              <div className="cameo">
-                <div className="ph">
-                  <Image src="/images/about.jpg" alt="Lilu és Marci" fill sizes="310px" />
-                </div>
-              </div>
-            </div>
+          <div className="wrap intro-top">
+            <h2 className="script h-script reveal">Kálna, Mátyás malom</h2>
+            <p className="lede reveal">
+              2027. július 10-én, szombaton összeházasodunk, és szeretnénk, ha ezen a napon ott lennél velünk.
+            </p>
+          </div>
+
+          {/* a full-screen photo, no frame */}
+          <div className="fullpic">
+            <Image src="/images/about.jpg" alt="Lilu és Marci" fill sizes="100vw" />
+          </div>
+
+          <div className="wrap intro-bottom">
+            <Countdown />
           </div>
         </section>
 
@@ -59,7 +49,7 @@ export default function Home() {
               <div>
                 <dt>Ami még hátra van</dt>
                 <dd>
-                  <a className="link" href="#idorend">
+                  <a className="link" href="#templom">
                     Az esküvő napja
                   </a>
                 </dd>
@@ -68,7 +58,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Templom: the church painting takes half the section, its edge cut with circles */}
+        {/* 1. Templom: the church painting takes half the section */}
         <section className="split" id="templom">
           <div className="split-pic" aria-hidden="true">
             <Image src="/images/church.jpg" alt="" fill sizes="(max-width: 800px) 100vw, 52vw" />
@@ -94,27 +84,97 @@ export default function Home() {
         </section>
       </div>
 
-      {/* Night: the party painting stays put while the programme scrolls over it */}
-      <div className="win night">
-        <section className="programme-sec" id="idorend">
+      {/* 2. Fogadás: champagne painting */}
+      <section className="win scene recep" id="fogadas">
+        <div className="wrap">
+          <div className="scene-card card-light reveal">
+            <p className="label">A szertartás után</p>
+            <h2 className="script h-script">Fogadás</h2>
+            <p className="lede">
+              Egy pohár pezsgővel köszöntünk benneteket, és együtt koccintunk az első közös percekre.
+            </p>
+            <dl className="mini">
+              <div>
+                <dt>Időpont</dt>
+                <dd>hamarosan</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Vacsora */}
+      <section className="win scene dinner" id="vacsora">
+        <div className="wrap">
+          <div className="arch dark reveal">
+            <p className="label">Az asztalnál</p>
+            <h2 className="script h-script">Vacsora</h2>
+            <p className="lede">
+              Közösen vacsorázunk a mennyezetről lógó fényfüzérek alatt. A menüről és az időpontról hamarosan írunk.
+            </p>
+            <dl className="mini">
+              <div>
+                <dt>Időpont</dt>
+                <dd>hamarosan</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Bál, mulatság: the night painting */}
+      <section className="win night scene" id="bal">
+        <div className="wrap">
+          <div className="scene-plain reveal">
+            <p className="label">Este</p>
+            <h2 className="script h-script">Bál, mulatság</h2>
+            <p className="lede">Vacsora után jön a zene, a tánc és a mulatság.</p>
+            <dl className="mini">
+              <div>
+                <dt>Időpont</dt>
+                <dd>hamarosan</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      {/* 5 and 6, then the practical sections: pastel white again */}
+      <div className="win wash">
+        <section className="cake" id="torta">
           <div className="wrap">
-            <p className="label reveal">Az esküvő napja</p>
-            <h2 className="script h-script reveal">Időrend</h2>
-            <ol className="programme reveal">
-              {TIMELINE.map((item) => (
-                <li key={item.title}>
-                  <span className="t-title">{item.title}</span>
-                  <span className="lead" aria-hidden="true" />
-                  <span className="t-time">{item.time}</span>
-                </li>
-              ))}
-            </ol>
+            <p className="label reveal">Édes pillanat</p>
+            <h2 className="script h-script reveal">Tortavágás</h2>
+            <p className="lede reveal">A tortavágás részleteit hamarosan megosztjuk.</p>
+            <div className="placeholder reveal" role="img" aria-label="Kép hamarosan">
+              <span>Kép hamarosan</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="transfer" id="transfer">
+          <div className="wrap">
+            <p className="label reveal">Utazás</p>
+            <h2 className="script h-script reveal">Transfer</h2>
+            <p className="lede reveal">
+              A helyszínek között kisbusz visz benneteket. A menetrendet és az indulási helyeket hamarosan
+              megosztjuk.
+            </p>
+          </div>
+          <div className="art narrow reveal">
+            <Image
+              src="/images/transfer-van.webp"
+              alt="Esküvői kisbusz virágdísszel"
+              width={1536}
+              height={1024}
+              sizes="(max-width: 860px) 100vw, 860px"
+            />
           </div>
         </section>
 
         <section className="gift" id="ajandek">
           <div className="wrap">
-            <div className="gift-box reveal">
+            <div className="arch reveal">
               <h2 className="script h-script">Ajándék</h2>
               <p className="lede">
                 Számunkra a legnagyobb ajándék, hogy ezen a különleges napon velünk ünnepelsz.
@@ -126,37 +186,20 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </div>
 
-      <div className="win wash">
         <section className="dress" id="dresscode">
           <div className="wrap">
-            <div className="dress-head">
-              <div>
-                <p className="label reveal">Öltözék</p>
-                <h2 className="script h-script reveal">Dress code</h2>
-              </div>
-              <div>
-                <p className="lede reveal">
-                  Toszkán, rusztikus-elegáns hangulat: földszínek, ivory, zsálya, oliva és karamell árnyalatok.
-                </p>
-                <div className="swatches reveal" aria-hidden="true">
-                  {SWATCHES.map((color) => (
-                    <span key={color} style={{ background: color }} />
-                  ))}
-                </div>
-                <p className="note reveal">A fehér színt hagyjuk a menyasszonynak.</p>
-              </div>
+            <p className="label reveal">Öltözék</p>
+            <h2 className="script h-script reveal">Dress code</h2>
+            <p className="lede reveal">
+              Toszkán, rusztikus-elegáns hangulat: földszínek, ivory, zsálya, oliva és karamell árnyalatok.
+            </p>
+            <div className="swatches reveal" aria-hidden="true">
+              {SWATCHES.map((color) => (
+                <span key={color} style={{ background: color }} />
+              ))}
             </div>
-          </div>
-          <div className="dress-art reveal">
-            <Image
-              src="/images/dresscode-art.webp"
-              alt="Öltözködési ötletek: krém, zsálya, oliva és karamell ruhák, fekete öltönyök"
-              width={1536}
-              height={1024}
-              sizes="(max-width: 1180px) 100vw, 1180px"
-            />
+            <p className="note reveal">A fehér színt hagyjuk a menyasszonynak.</p>
           </div>
         </section>
 
