@@ -1,8 +1,7 @@
-// Hand-drawn line-art set. The hero scene, timeline icons, ribbon, envelopes,
-// sparkles, rings and bride sketch are ported from the Stitch design export;
-// dress, suit, villa and wreath are original. Everything strokes with
-// currentColor, so each usage picks its own colour (ink on ivory, ivory on the
-// olive bands, white on the dark footer).
+// Hand-drawn line-art set, ported from the Stitch design export (hero table
+// scene, timeline icons, ribbon, envelopes, sparkles, rings, bride sketch).
+// Everything strokes with currentColor, so each usage picks its own colour
+// (ink on ivory, ivory on the olive bands).
 
 type IconProps = { className?: string };
 
@@ -242,67 +241,6 @@ export function BrideSketch({ className }: IconProps) {
       <rect height={10} rx={1} strokeWidth={1.3} width={6} x={36} y={212} />
       <path d="M 85 198 C 95 205, 105 210, 112 216" strokeDasharray="2 2" strokeWidth={1.2} />
       <rect height={10} rx={1} strokeWidth={1.3} width={6} x={110} y={212} />
-    </svg>
-  );
-}
-
-export function DressSketch({ className }: IconProps) {
-  return (
-    <svg viewBox="0 0 64 96" className={className} aria-hidden="true" {...STROKE} strokeWidth={2}>
-      <path d="M 32 4 L 32 9" />
-      <path d="M 32 9 L 20 16 M 32 9 L 44 16" />
-      <path d="M 24 22 Q 32 30 40 22 L 43 40 L 39 46 L 56 90 Q 32 97 8 90 L 25 46 L 21 40 Z" />
-      <path d="M 24 22 L 24 16 M 40 22 L 40 16" />
-      <path d="M 25 46 L 39 46" strokeDasharray="2 2" strokeWidth={1.2} />
-      <path d="M 20 78 Q 32 84 44 78" strokeWidth={1.2} opacity={0.7} />
-    </svg>
-  );
-}
-
-export function SuitSketch({ className }: IconProps) {
-  return (
-    <svg viewBox="0 0 64 96" className={className} aria-hidden="true" {...STROKE} strokeWidth={2}>
-      <path d="M 22 10 L 32 22 L 42 10 L 54 18 L 52 56 L 44 58 L 44 92 L 20 92 L 20 58 L 12 56 L 10 18 Z" />
-      <path d="M 32 22 L 24 40 L 32 50 L 40 40 Z" />
-      <path d="M 32 22 L 32 50" strokeWidth={1.2} />
-      <path d="M 27 26 L 32 30 L 37 26 L 37 32 L 32 30 L 27 32 Z" fill="currentColor" strokeWidth={1} />
-      <path d="M 32 62 L 32 92" strokeWidth={1.2} />
-      <circle cx={35} cy={58} r={1.2} fill="currentColor" />
-    </svg>
-  );
-}
-
-export function VillaSketch({ className }: IconProps) {
-  return (
-    <svg viewBox="0 0 160 110" className={className} aria-hidden="true" {...STROKE} strokeWidth={2.4}>
-      <path d="M8 100 L152 100" />
-      <path d="M24 100 L24 54 L52 34 L80 54 L80 100" />
-      <path d="M24 54 L80 54" />
-      <path d="M40 100 L40 78 L60 78 L60 100" />
-      <path d="M48 64 L56 64 L56 72 L48 72 Z" />
-      <path d="M96 100 Q96 48 102 24 Q108 48 108 100" />
-      <path d="M118 100 Q118 55 123 35 Q128 55 128 100" />
-      <path d="M136 100 Q136 60 140 44 Q144 60 144 100" />
-    </svg>
-  );
-}
-
-export function WreathSketch({ className }: IconProps) {
-  const leaves = Array.from({ length: 18 }, (_, i) => i);
-  return (
-    <svg viewBox="0 0 100 100" className={className} aria-hidden="true" {...STROKE} strokeWidth={1.8}>
-      {leaves.map((i) => {
-        const angle = (i / leaves.length) * 360;
-        // Gap at the bottom for a little bow, like a hung wreath.
-        if (angle > 165 && angle < 195) return null;
-        return (
-          <g key={i} transform={`rotate(${angle} 50 50)`}>
-            <path d="M50 12 Q54 18 50 24 Q46 18 50 12 Z" />
-          </g>
-        );
-      })}
-      <path d="M50 88 Q46 92 50 96 Q54 92 50 88 Z" opacity="0.8" />
-      <path d="M44 90 L50 96 L56 90" opacity="0.8" />
     </svg>
   );
 }

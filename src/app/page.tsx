@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Reveal from "@/components/wedding/Reveal";
-import Countdown from "@/components/wedding/Countdown";
-import Faq from "@/components/wedding/Faq";
 import RsvpForm from "@/components/wedding/RsvpForm";
-import JourneyMap from "@/components/wedding/JourneyMap";
 import SiteJourney from "@/components/wedding/SiteJourney";
 import {
   HeroTableScene,
@@ -18,22 +15,15 @@ import {
   SparklesSketch,
   RingsSketch,
   BrideSketch,
-  DressSketch,
-  SuitSketch,
-  VillaSketch,
-  WreathSketch,
 } from "@/components/wedding/Sketches";
 
-// Order here must match the order of sections on the page (SiteJourney relies on it).
+// Same link order as the Stitch header.
 const NAV = [
-  { href: "#tortenet", label: "Történetünk" },
-  { href: "#helyszin", label: "Helyszín" },
-  { href: "#idorend", label: "Időrend" },
   { href: "#rsvp", label: "RSVP" },
+  { href: "#ajandek", label: "Ajándék" },
   { href: "#dresscode", label: "Dress code" },
-  { href: "#menu", label: "Menü" },
+  { href: "#idorend", label: "Időrend" },
   { href: "#szallas", label: "Szállás" },
-  { href: "#gyik", label: "GYIK" },
 ];
 
 const TIMELINE = [
@@ -43,13 +33,6 @@ const TIMELINE = [
   { time: "TBA", title: "Bál, mulatság", Icon: DancingSketch },
   { time: "TBA", title: "Tortavágás", Icon: CakeSketch },
   { time: "TBA", title: "Búcsúzás", Icon: CarSketch },
-];
-
-const MENU_COURSES = [
-  { course: "Előétel", note: "Részletek hamarosan" },
-  { course: "Főétel", note: "Részletek hamarosan" },
-  { course: "Desszert", note: "Részletek hamarosan" },
-  { course: "Italok", note: "Részletek hamarosan" },
 ];
 
 const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=K%C3%A1lna+M%C3%A1ty%C3%A1s+Malom";
@@ -107,18 +90,21 @@ export default function Home() {
       <SiteJourney />
 
       {/* Header */}
-      <header className="sticky top-0 z-30 bg-[#fcf8ef]/95 backdrop-blur-sm border-b border-[#e5e0d0]">
+      <header className="sticky top-0 z-30 bg-[#7c8c5b] text-[#fcf8ef] shadow-md">
         <nav
           aria-label="Főmenü"
-          className="max-w-6xl mx-auto px-6 py-2 sm:py-3 flex flex-col sm:flex-row items-center sm:justify-between gap-1 sm:gap-8"
+          className="max-w-5xl mx-auto px-6 py-3 sm:py-4 flex flex-col sm:flex-row items-center sm:justify-between gap-1 sm:gap-8"
         >
-          <a href="#hero" className="font-script text-[32px] leading-none text-[#3d3d2f] shrink-0">
+          <a
+            href="#hero"
+            className="font-script text-[32px] sm:text-[36px] leading-none tracking-wide text-[#fcf8ef] hover:text-[#f6eaa9] transition-colors shrink-0"
+          >
             Lilu &amp; Marci
           </a>
-          <ul className="flex items-center gap-6 w-full sm:w-auto overflow-x-auto whitespace-nowrap py-1 text-[11px] font-semibold tracking-[0.18em] uppercase">
+          <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 sm:gap-x-10 text-[10px] sm:text-[11px] font-semibold tracking-[0.1em] sm:tracking-[0.2em] uppercase">
             {NAV.map((item) => (
-              <li key={item.href} className="shrink-0">
-                <a href={item.href} className="text-[#52514f] no-underline hover:text-[#a8834f] transition-colors">
+              <li key={item.href}>
+                <a href={item.href} className="no-underline hover:text-[#f6eaa9] transition-colors">
                   {item.label}
                 </a>
               </li>
@@ -148,83 +134,11 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <Countdown className="mt-4 text-[#a8834f] text-sm tracking-[0.18em] uppercase" />
           </div>
-        </section>
-
-        {/* Történetünk */}
-        <section id="tortenet" className="py-16 px-6 border-t border-[#a8834f]/15">
-          <div className="max-w-5xl mx-auto">
-            <Reveal>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-center">
-                <PhotoFrame
-                  src="/images/intro.jpeg"
-                  alt="Lilu és Marci"
-                  width={640}
-                  height={720}
-                  imgClassName="h-[420px] md:h-[480px] object-top"
-                />
-                <div className="text-left">
-                  <SectionTitle className="text-[#3d3d2f] mb-6">Történetünk</SectionTitle>
-                  <div className="space-y-4 wedding-body">
-                    <p>
-                      2027. július 10-én tartjuk esküvőnket a Kálna Mátyás Malomban. Ezen az oldalon megtalálod a
-                      helyszínt, az időrendet, a menüt és minden fontos részletet — a pontos adatokat folyamatosan
-                      frissítjük.
-                    </p>
-                    <p className="font-semibold text-[#a8834f]">
-                      A történetünket hamarosan részletesebben is megosztjuk. Addig lépkedj végig az utunkon az
-                      alábbi térképen.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal className="mt-16">
-              <JourneyMap />
-            </Reveal>
-          </div>
-        </section>
-
-        {/* Helyszín */}
-        <section id="helyszin" className="bg-[#eff0e4] py-20 px-6">
-          <Reveal className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-center">
-              <div className="order-2 md:order-1 text-left">
-                <div className="flex items-end gap-4 mb-3 text-[#3d3d2f]">
-                  <ChurchSketch className="h-[64px] w-auto" />
-                  <VillaSketch className="h-[52px] w-auto" />
-                </div>
-                <SectionTitle className="text-[#3d3d2f] mb-6">Helyszín</SectionTitle>
-                <div className="space-y-2 wedding-body">
-                  <p className="font-semibold text-[#3d3d2f]">Kálna, Mátyás Malom</p>
-                  <p>2027. július 10., szombat</p>
-                  <p className="text-[#8a9668]">A pontos cím és megközelítés hamarosan érkezik.</p>
-                </div>
-                <a
-                  href={MAPS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-7 text-[11px] font-semibold tracking-[0.2em] uppercase text-[#a8834f] border-b border-[#a8834f]/50 pb-1 no-underline hover:text-[#7c8c5b] hover:border-[#7c8c5b] transition-colors"
-                >
-                  Megnyitás a térképen
-                </a>
-              </div>
-              <div className="order-1 md:order-2">
-                <PhotoFrame
-                  src="/images/venue.jpeg"
-                  alt="Kálna, Mátyás Malom"
-                  width={800}
-                  height={530}
-                  imgClassName="h-[300px] md:h-[360px]"
-                />
-              </div>
-            </div>
-          </Reveal>
         </section>
 
         {/* Időrend */}
-        <section id="idorend" className="py-20 px-6">
+        <section id="idorend" className="py-20 px-6 border-t border-[#a8834f]/15">
           <Reveal className="max-w-5xl mx-auto text-center">
             <SectionTitle className="text-[#3d3d2f] mb-14">Időrend</SectionTitle>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-12">
@@ -272,10 +186,12 @@ export default function Home() {
                   </p>
                   <p>Köszönjük, hogy időt szánsz a válaszra!</p>
                 </div>
-                <EnvelopesSketch className="hidden md:block w-56 h-auto mt-10 text-[#fcf8ef] pointer-events-none select-none" />
               </div>
-              <div className="bg-[#fcf8ef] text-[#52514f] rounded-lg shadow-xl p-6 sm:p-8">
-                <RsvpForm />
+              <div>
+                <div className="bg-[#fcf8ef] text-[#52514f] rounded-lg shadow-xl p-6 sm:p-8">
+                  <RsvpForm />
+                </div>
+                <EnvelopesSketch className="w-52 sm:w-60 h-auto mt-4 ml-auto mr-2 text-[#fcf8ef] pointer-events-none select-none" />
               </div>
             </div>
           </Reveal>
@@ -289,8 +205,8 @@ export default function Home() {
                 <SectionTitle className="text-[#3d3d2f] mb-6">Dress code</SectionTitle>
                 <div className="space-y-4 wedding-body">
                   <p>
-                    Toszkán, rusztikus-elegáns hangulat — földszínek: <strong className="text-[#a8834f]">ivory, zsálya, oliva és karamell</strong>{" "}
-                    árnyalatok.
+                    Toszkán, rusztikus-elegáns hangulat — földszínek:{" "}
+                    <strong className="text-[#a8834f]">ivory, zsálya, oliva és karamell</strong> árnyalatok.
                   </p>
                   <p className="text-[#8a9668]">A fehér színt hagyjuk a menyasszonynak.</p>
                 </div>
@@ -300,10 +216,6 @@ export default function Home() {
                   <div className="w-9 h-9 rounded-full bg-[#7c8c5b]" />
                   <div className="w-9 h-9 rounded-full bg-[#c2a87a]" />
                   <div className="w-9 h-9 rounded-full bg-[#a8834f]" />
-                </div>
-                <div className="flex items-end gap-6 mt-8 text-[#3d3d2f]">
-                  <DressSketch className="h-[88px] w-auto" />
-                  <SuitSketch className="h-[88px] w-auto" />
                 </div>
               </div>
               <div className="order-1 md:order-2">
@@ -315,28 +227,6 @@ export default function Home() {
                   imgClassName="h-[420px] md:h-[480px] object-top"
                 />
               </div>
-            </div>
-          </Reveal>
-        </section>
-
-        {/* Menü */}
-        <section id="menu" className="bg-[#eff0e4] py-20 px-6">
-          <Reveal className="max-w-4xl mx-auto text-center">
-            <div className="flex items-center justify-center gap-5 mb-4 text-[#3d3d2f]">
-              <CakeSketch className="w-14 h-14" />
-              <div className="w-[84px] h-[84px] rounded-full bg-[#f6eaa9] flex items-center justify-center font-script text-[32px] text-[#3d3d2f] shrink-0">
-                L&amp;M
-              </div>
-              <ChampagneSketch className="w-14 h-14" />
-            </div>
-            <SectionTitle className="text-[#3d3d2f] mb-10">Menü</SectionTitle>
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-[30px]">
-              {MENU_COURSES.map((c) => (
-                <div key={c.course} className="border border-[#e5e0d0] rounded-md px-4 py-6 bg-[#fcf8ef]">
-                  <div className="text-[13px] tracking-[0.16em] uppercase text-[#a8834f]">{c.course}</div>
-                  <div className="text-sm text-[#8a9668] mt-2">{c.note}</div>
-                </div>
-              ))}
             </div>
           </Reveal>
         </section>
@@ -372,11 +262,11 @@ export default function Home() {
           <Reveal className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-center">
               <PhotoFrame
-                src="/images/hero.jpeg"
-                alt="Lilu és Marci"
-                width={640}
-                height={720}
-                imgClassName="h-[320px] md:h-[400px] object-[center_30%]"
+                src="/images/venue.jpeg"
+                alt="Kálna, Mátyás Malom"
+                width={800}
+                height={530}
+                imgClassName="h-[300px] md:h-[380px] object-center"
                 accent="#fcf8ef"
               />
               <div className="text-left">
@@ -386,7 +276,7 @@ export default function Home() {
                     Szeretnénk, ha a pihenésed is kényelmes és zökkenőmentes lenne. Ajánlott szálláshelyeket a Kálna
                     környékén hamarosan megosztunk.
                   </p>
-                  <p>Ha addig kérdésed van, írj nekünk az alábbi elérhetőségeken.</p>
+                  <p>A helyszínre vezető útvonalat az alábbi gombbal nyithatod meg.</p>
                 </div>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
@@ -402,35 +292,22 @@ export default function Home() {
             </div>
           </Reveal>
         </section>
-
-        {/* GYIK */}
-        <section id="gyik" className="bg-[#eff0e4] py-20 px-6">
-          <Reveal className="max-w-2xl mx-auto">
-            <SectionTitle className="text-[#3d3d2f] text-center mb-10">Gyakori kérdések</SectionTitle>
-            <Faq />
-          </Reveal>
-        </section>
       </main>
 
       {/* Footer */}
-      <footer id="kapcsolat" className="bg-[#3d3d2f] text-[#fcf8ef] px-6 pt-16 pb-11 text-center">
-        <div className="relative w-[104px] h-[104px] mx-auto mb-[18px] text-[#fcf8ef]">
-          <WreathSketch className="absolute inset-0 w-full h-full opacity-90" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-[#f6eaa9] flex items-center justify-center font-script text-[26px] text-[#3d3d2f]">
-              L&amp;M
-            </div>
+      <footer id="kapcsolat" className="bg-[#fcf8ef] border-t border-[#a8834f]/15 py-12 px-6 text-center">
+        <div className="max-w-4xl mx-auto space-y-4">
+          <p className="font-script text-[44px] sm:text-[52px] leading-none text-[#3d3d2f]">Lilu &amp; Marci</p>
+          <p className="text-xs tracking-[0.22em] uppercase text-[#a8834f]">
+            2027. július 10. • Kálna, Mátyás Malom
+          </p>
+          <div className="pt-6">
+            <p className="text-[10px] tracking-[0.2em] uppercase text-[#8a9668]">
+              Szeretettel készült barátainknak és családunknak
+            </p>
+            <p className="text-[10px] text-[#8a9668] mt-2">Fotók: @blankartphotography</p>
           </div>
         </div>
-        <div className="font-script text-[40px] leading-none">Lilu &amp; Marci</div>
-        <p className="text-[12px] tracking-[0.2em] uppercase text-[#d7d3c2] mt-4">
-          2027. július 10. • Kálna, Mátyás Malom
-        </p>
-        <p className="text-[13px] text-[#d7d3c2] mt-2">Kérdés esetén elérhetőségeinket hamarosan közzétesszük.</p>
-        <p className="text-[10px] tracking-[0.2em] uppercase text-[#a09c8a] mt-8">
-          Szeretettel készült barátainknak és családunknak
-        </p>
-        <p className="text-[11px] text-[#a09c8a] mt-2">Fotók: @blankartphotography</p>
       </footer>
     </div>
   );

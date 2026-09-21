@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Confetti } from "./JourneyMap";
+import Confetti from "./Confetti";
 
 type Milestone = {
   id: string;
@@ -12,15 +12,11 @@ type Milestone = {
 // Must stay in the same order as the sections on the page.
 const MILESTONES: Milestone[] = [
   { id: "hero", icon: "💛", label: "Kezdet" },
-  { id: "tortenet", icon: "🥾", label: "Történetünk" },
-  { id: "helyszin", icon: "🏡", label: "Helyszín" },
   { id: "idorend", icon: "⏰", label: "Időrend" },
   { id: "rsvp", icon: "💌", label: "RSVP" },
   { id: "dresscode", icon: "👗", label: "Dress code" },
-  { id: "menu", icon: "🍽️", label: "Menü" },
   { id: "ajandek", icon: "🎁", label: "Ajándék" },
   { id: "szallas", icon: "🛏️", label: "Szállás" },
-  { id: "gyik", icon: "❓", label: "GYIK" },
   { id: "kapcsolat", icon: "🎉", label: "Vége" },
 ];
 

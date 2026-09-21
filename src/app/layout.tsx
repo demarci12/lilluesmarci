@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="hu" className={`${scriptFont.variable} ${questrial.variable} h-full antialiased`}>
+    <html lang="hu" className={`${scriptFont.variable} ${questrial.variable} h-full antialiased scroll-smooth`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
