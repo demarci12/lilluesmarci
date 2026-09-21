@@ -67,9 +67,13 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative min-h-[640px] flex items-center justify-center text-center overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(160deg, #7c8c5b 0%, #52514f 55%, #3d3d2f 100%)" }}
+        <Image
+          src="/images/hero.jpeg"
+          alt="Lilu és Marci"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_30%] brightness-[0.7]"
         />
         <div
           className="absolute inset-0"
@@ -123,12 +127,13 @@ export default function Home() {
           className="max-w-[1100px] mx-auto px-6 pt-5 pb-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
         >
           <div className="p-[10px] border border-[#e5e0d0] rounded-md md:order-2">
-            <div
-              className="w-full h-[320px] rounded flex items-center justify-center text-[#fcf8ef] text-sm"
-              style={{ background: "linear-gradient(135deg, #b8ca9a 0%, #7c8c5b 100%)" }}
-            >
-              Kálna, Mátyás Malom
-            </div>
+            <Image
+              src="/images/venue.jpeg"
+              alt="Kálna, Mátyás Malom"
+              width={640}
+              height={320}
+              className="w-full h-[320px] object-cover rounded block"
+            />
           </div>
           <div>
             <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">02</div>

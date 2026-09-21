@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Ephesis, Questrial } from "next/font/google";
+import { Beau_Rivage, Questrial } from "next/font/google";
 import "./globals.css";
 
-const ephesis = Ephesis({
-  variable: "--font-script",
+const scriptFont = Beau_Rivage({
+  variable: "--font-script-raw",
   subsets: ["latin"],
   weight: "400",
 });
 
 const questrial = Questrial({
-  variable: "--font-sans",
+  variable: "--font-sans-raw",
   subsets: ["latin"],
   weight: "400",
 });
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="hu" className={`${ephesis.variable} ${questrial.variable} h-full antialiased`}>
+    <html lang="hu" className={`${scriptFont.variable} ${questrial.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
