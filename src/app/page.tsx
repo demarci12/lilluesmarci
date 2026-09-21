@@ -97,58 +97,59 @@ export default function Home() {
       </section>
 
       {/* Intro */}
-      <Reveal>
-        <section className="max-w-[1100px] mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="p-[10px] border border-[#e5e0d0] rounded-md">
-            <Image
-              src="/images/intro.jpeg"
-              alt="Lilu és Marci"
-              width={640}
-              height={420}
-              className="w-full h-[420px] object-cover object-top rounded block"
-            />
+      <section className="bg-[#fcf8ef]">
+        <Reveal>
+          <div className="max-w-[1100px] mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="p-[10px] border border-[#e5e0d0] rounded-md">
+              <Image
+                src="/images/intro.jpeg"
+                alt="Lilu és Marci"
+                width={640}
+                height={420}
+                className="w-full h-[420px] object-cover object-top rounded block"
+              />
+            </div>
+            <div className="text-left">
+              <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">01</div>
+              <div className="font-script text-[32px] text-[#a8834f] my-1 mb-3">Szeretettel várunk</div>
+              <p className="text-base leading-[1.8]">
+                2027. július 10-én tartjuk esküvőnket a Kálna Mátyás Malomban. Ezen az oldalon megtalálod a
+                helyszínt, az időrendet, a menüt és minden fontos részletet — a pontos adatokat folyamatosan
+                frissítjük.
+              </p>
+            </div>
           </div>
-          <div className="text-left">
-            <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">01</div>
-            <div className="font-script text-[32px] text-[#a8834f] my-1 mb-3">Szeretettel várunk</div>
-            <p className="text-base leading-[1.8]">
-              2027. július 10-én tartjuk esküvőnket a Kálna Mátyás Malomban. Ezen az oldalon megtalálod a
-              helyszínt, az időrendet, a menüt és minden fontos részletet — a pontos adatokat folyamatosan
-              frissítjük.
-            </p>
-          </div>
-        </section>
-      </Reveal>
+        </Reveal>
+      </section>
 
       {/* Helyszín */}
-      <Reveal>
-        <section
-          id="helyszin"
-          className="max-w-[1100px] mx-auto px-6 pt-5 pb-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
-        >
-          <div className="p-[10px] border border-[#e5e0d0] rounded-md md:order-2">
-            <Image
-              src="/images/venue.jpeg"
-              alt="Kálna, Mátyás Malom"
-              width={640}
-              height={320}
-              className="w-full h-[320px] object-cover rounded block"
-            />
-          </div>
-          <div>
-            <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">02</div>
-            <div className="text-[13px] tracking-[0.16em] uppercase text-[#8a9668] mt-1">
-              Helyszín &amp; időpont
+      <section id="helyszin" className="bg-[#eff0e4]">
+        <Reveal>
+          <div className="max-w-[1100px] mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div className="p-[10px] border border-[#e5e0d0] rounded-md bg-[#fcf8ef] md:order-2">
+              <Image
+                src="/images/venue.jpeg"
+                alt="Kálna, Mátyás Malom"
+                width={640}
+                height={320}
+                className="w-full h-[320px] object-cover rounded block"
+              />
             </div>
-            <div className="font-script text-[44px] text-[#3d3d2f] my-[6px] mb-[10px]">Kálna, Mátyás Malom</div>
-            <p className="text-[15px] leading-[1.7] mb-1.5">2027. július 10., szombat</p>
-            <p className="text-[15px] leading-[1.7] text-[#8a9668]">A pontos cím és megközelítés hamarosan érkezik.</p>
+            <div>
+              <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">02</div>
+              <div className="text-[13px] tracking-[0.16em] uppercase text-[#8a9668] mt-1">
+                Helyszín &amp; időpont
+              </div>
+              <div className="font-script text-[44px] text-[#3d3d2f] my-[6px] mb-[10px]">Kálna, Mátyás Malom</div>
+              <p className="text-[15px] leading-[1.7] mb-1.5">2027. július 10., szombat</p>
+              <p className="text-[15px] leading-[1.7] text-[#8a9668]">A pontos cím és megközelítés hamarosan érkezik.</p>
+            </div>
           </div>
-        </section>
-      </Reveal>
+        </Reveal>
+      </section>
 
       {/* Időrend */}
-      <section id="idorend" className="bg-[#eff0e4] px-6 py-[90px]">
+      <section id="idorend" className="bg-[#fcf8ef] px-6 py-[90px]">
         <Reveal className="max-w-[640px] mx-auto text-center">
           <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">03</div>
           <div className="font-script text-[44px] text-[#3d3d2f] mt-1">Időrend</div>
@@ -164,8 +165,8 @@ export default function Home() {
       </section>
 
       {/* Menü */}
-      <Reveal className="max-w-[900px] mx-auto px-6 py-[90px] text-center">
-        <section id="menu">
+      <section id="menu" className="bg-[#eff0e4] px-6 py-[90px]">
+        <Reveal className="max-w-[900px] mx-auto text-center">
           <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">04</div>
           <div className="w-[84px] h-[84px] rounded-full bg-[#f6eaa9] flex items-center justify-center font-script text-[32px] text-[#3d3d2f] mx-auto mt-2 mb-[18px]">
             L&amp;M
@@ -174,17 +175,17 @@ export default function Home() {
           <Divider />
           <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-[30px]">
             {MENU_COURSES.map((c) => (
-              <div key={c.course} className="border border-[#e5e0d0] rounded-md px-4 py-6">
+              <div key={c.course} className="border border-[#e5e0d0] rounded-md px-4 py-6 bg-[#fcf8ef]">
                 <div className="text-[13px] tracking-[0.16em] uppercase text-[#a8834f]">{c.course}</div>
                 <div className="text-sm text-[#8a9668] mt-2">{c.note}</div>
               </div>
             ))}
           </div>
-        </section>
-      </Reveal>
+        </Reveal>
+      </section>
 
       {/* Szállás */}
-      <section id="szallas" className="bg-white border-y border-[#e5e0d0] px-6 py-[90px]">
+      <section id="szallas" className="bg-[#fcf8ef] px-6 py-[90px]">
         <Reveal className="max-w-[640px] mx-auto text-center">
           <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">05</div>
           <div className="font-script text-[44px] text-[#3d3d2f] mt-1">Szállás</div>
@@ -197,40 +198,39 @@ export default function Home() {
       </section>
 
       {/* Dress code */}
-      <Reveal>
-        <section
-          id="dresscode"
-          className="max-w-[1100px] mx-auto px-6 py-[90px] grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-        >
-          <div>
-            <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">06</div>
-            <div className="font-script text-[44px] text-[#3d3d2f] my-1.5 mb-4">Dress code</div>
-            <p className="text-[15px] leading-[1.7]">
-              Toszkán, rusztikus-elegáns hangulat — földszínek: ivory, zsálya, oliva és karamell árnyalatok.
-            </p>
-            <div className="flex gap-3 mt-[22px]">
-              <div className="w-9 h-9 rounded-full bg-[#fcf8ef] border border-[#e5e0d0]" />
-              <div className="w-9 h-9 rounded-full bg-[#b8ca9a]" />
-              <div className="w-9 h-9 rounded-full bg-[#7c8c5b]" />
-              <div className="w-9 h-9 rounded-full bg-[#c2a87a]" />
-              <div className="w-9 h-9 rounded-full bg-[#a8834f]" />
+      <section id="dresscode" className="bg-[#eff0e4]">
+        <Reveal>
+          <div className="max-w-[1100px] mx-auto px-6 py-[90px] grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">06</div>
+              <div className="font-script text-[44px] text-[#3d3d2f] my-1.5 mb-4">Dress code</div>
+              <p className="text-[15px] leading-[1.7]">
+                Toszkán, rusztikus-elegáns hangulat — földszínek: ivory, zsálya, oliva és karamell árnyalatok.
+              </p>
+              <div className="flex gap-3 mt-[22px]">
+                <div className="w-9 h-9 rounded-full bg-[#fcf8ef] border border-[#e5e0d0]" />
+                <div className="w-9 h-9 rounded-full bg-[#b8ca9a]" />
+                <div className="w-9 h-9 rounded-full bg-[#7c8c5b]" />
+                <div className="w-9 h-9 rounded-full bg-[#c2a87a]" />
+                <div className="w-9 h-9 rounded-full bg-[#a8834f]" />
+              </div>
+              <p className="text-[13px] text-[#8a9668] mt-[18px]">A fehér színt hagyjuk a menyasszonynak.</p>
             </div>
-            <p className="text-[13px] text-[#8a9668] mt-[18px]">A fehér színt hagyjuk a menyasszonynak.</p>
+            <div className="p-[10px] border border-[#e5e0d0] rounded-md bg-[#fcf8ef]">
+              <Image
+                src="/images/dresscode.jpeg"
+                alt="Lilu és Marci"
+                width={640}
+                height={420}
+                className="w-full h-[420px] object-cover object-top rounded block"
+              />
+            </div>
           </div>
-          <div className="p-[10px] border border-[#e5e0d0] rounded-md">
-            <Image
-              src="/images/dresscode.jpeg"
-              alt="Lilu és Marci"
-              width={640}
-              height={420}
-              className="w-full h-[420px] object-cover object-top rounded block"
-            />
-          </div>
-        </section>
-      </Reveal>
+        </Reveal>
+      </section>
 
       {/* GYIK */}
-      <section id="gyik" className="bg-[#eff0e4] px-6 py-[90px]">
+      <section id="gyik" className="bg-[#fcf8ef] px-6 py-[90px]">
         <Reveal className="max-w-[640px] mx-auto">
           <div className="text-center text-[13px] text-[#c2a87a] tracking-[0.1em]">07</div>
           <div className="text-center font-script text-[44px] text-[#3d3d2f] mt-1">Gyakori kérdések</div>
@@ -240,7 +240,7 @@ export default function Home() {
       </section>
 
       {/* RSVP */}
-      <section id="rsvp" className="bg-white border-t border-[#e5e0d0] px-6 py-[90px]">
+      <section id="rsvp" className="bg-[#eff0e4] px-6 py-[90px]">
         <Reveal className="max-w-[520px] mx-auto text-center">
           <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">08</div>
           <div className="font-script text-[44px] text-[#3d3d2f] mt-1">Visszajelzés</div>
