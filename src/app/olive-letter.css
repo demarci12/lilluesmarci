@@ -855,27 +855,32 @@ html.locked body {
   }
 }
 
-/* Templom: half the section is the church painting, cut on its inner edge with circles */
-.ol .split {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.94fr);
-  min-height: 640px;
-  padding: 0;
+/* Templom: the church painting is the full background, like the other programme scenes */
+.ol .templom {
+  --win-img: url(/images/church.jpg);
+  --win-veil: linear-gradient(rgba(255, 251, 242, 0.05), rgba(255, 251, 242, 0.05));
+  --win-pos: 60% 0%;
 }
-.ol .split-text {
-  grid-column: 1;
-  grid-row: 1;
-  align-self: center;
-  padding: 72px 56px 72px max(24px, calc((100vw - 1040px) / 2));
+.ol .templom .arch {
+  background: rgba(253, 250, 243, 0.9);
+  box-shadow: 0 26px 56px rgba(30, 22, 8, 0.28);
 }
-.ol .split-pic {
-  position: relative;
-  grid-column: 2;
-  grid-row: 1;
+@media (min-width: 801px) and (min-aspect-ratio: 4/3) {
+  /* wide screens: zoom in and keep the church on the right, the words on the left over sky and trees */
+  .ol .templom {
+    --win-size: 150% auto;
+    --win-pos: 0% 0%;
+  }
+  .ol .templom .arch {
+    margin-left: 0;
+  }
 }
-.ol .split-pic img {
-  object-fit: cover;
-  object-position: 62% 40%;
+@media (max-width: 800px) {
+  /* phones: the words sit low so the church stays visible above them */
+  .ol .templom.scene {
+    align-items: flex-end;
+    min-height: 118svh;
+  }
 }
 .ol .mini {
   display: flex;
@@ -892,27 +897,6 @@ html.locked body {
   font-size: 24px;
   font-variant: normal;
 }
-@media (max-width: 800px) {
-  .ol .split {
-    grid-template-columns: 1fr;
-    min-height: 0;
-    text-align: center;
-  }
-  .ol .split-pic {
-    grid-column: 1;
-    grid-row: 1;
-    height: 340px;
-  }
-  .ol .split-text {
-    grid-column: 1;
-    grid-row: 2;
-    padding: 44px 24px 72px;
-  }
-  .ol .mini {
-    justify-content: center;
-  }
-}
-
 /* ---------- intro: heading, a full-width striped band with the photo, then the countdown ---------- */
 .ol .intro {
   padding-left: 0;
@@ -926,26 +910,6 @@ html.locked body {
 .ol .intro .lede {
   margin-left: auto;
   margin-right: auto;
-}
-/* a portrait photo shown full width: tall enough on desktop to keep the cross and both faces in frame */
-.ol .fullpic {
-  position: relative;
-  height: min(102vw, 1400px);
-  margin-top: clamp(36px, 5vw, 60px);
-  overflow: hidden;
-}
-.ol .fullpic img {
-  object-fit: cover;
-  object-position: 50% 4%;
-}
-@media (max-width: 800px) {
-  .ol .fullpic {
-    height: 100svh;
-    min-height: 520px;
-  }
-  .ol .fullpic img {
-    object-position: 50% 20%;
-  }
 }
 .ol .intro-bottom .count {
   justify-content: center;

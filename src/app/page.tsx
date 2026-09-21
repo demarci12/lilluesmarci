@@ -25,11 +25,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* a full-screen photo, no frame */}
-          <div className="fullpic">
-            <Image src="/images/about.jpg" alt="Lilu és Marci" fill sizes="100vw" />
-          </div>
-
           <div className="wrap intro-bottom">
             <Countdown />
           </div>
@@ -57,20 +52,19 @@ export default function Home() {
             </dl>
           </div>
         </section>
+      </div>
 
-        {/* 1. Templom: the church painting takes half the section */}
-        <section className="split" id="templom">
-          <div className="split-pic" aria-hidden="true">
-            <Image src="/images/church.jpg" alt="" fill sizes="(max-width: 800px) 100vw, 52vw" />
-          </div>
-          <div className="split-text">
-            <p className="label reveal">Egyházi szertartás</p>
-            <h2 className="script h-script reveal">Templom</h2>
-            <p className="lede reveal">
+      {/* 1. Templom: church painting */}
+      <section className="win scene templom" id="templom">
+        <div className="wrap">
+          <div className="arch reveal">
+            <p className="label">Egyházi szertartás</p>
+            <h2 className="script h-script">Templom</h2>
+            <p className="lede">
               Az esküvői szertartás templomban lesz, onnan együtt indulunk tovább a mulatság helyszínére. A templom
               pontos címét és a kezdés időpontját hamarosan megírjuk.
             </p>
-            <dl className="mini reveal">
+            <dl className="mini">
               <div>
                 <dt>Kezdés</dt>
                 <dd>hamarosan</dd>
@@ -81,8 +75,8 @@ export default function Home() {
               </div>
             </dl>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
       {/* 2. Fogadás: champagne painting */}
       <section className="win scene recep" id="fogadas">
