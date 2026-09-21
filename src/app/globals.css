@@ -78,6 +78,23 @@
   animation: fadeUp 1s ease;
 }
 
+/* Body copy styles from the Stitch layout: small, tracked, uppercase on ivory... */
+.wedding-body {
+  font-size: 0.8125rem;
+  line-height: 1.9;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--color-ink-soft);
+}
+
+/* ...and sentence case, slightly larger, on the olive bands. */
+.wedding-body-light {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  letter-spacing: 0.03em;
+  color: var(--color-ivory);
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(28px);

@@ -44,3 +44,6 @@ next-env.d.ts
 
 # raw sketch source dump (only the curated crops in public/sketches/ are used)
 /wedding_black_ink_sketches/
+
+# Stitch design export (reference only)
+/stitch_custom_wedding_website_design/

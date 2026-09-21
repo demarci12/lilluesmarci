@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import { Beau_Rivage, Questrial } from "next/font/google";
 import "./globals.css";
 
+// latin-ext is required for Hungarian ő/ű; "latin" alone falls back to a system font for them.
 const scriptFont = Beau_Rivage({
   variable: "--font-script-raw",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: "400",
 });
 
 const questrial = Questrial({
   variable: "--font-sans-raw",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: "400",
 });
 
