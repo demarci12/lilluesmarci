@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Confetti, StickCouple } from "./JourneyMap";
+import { Confetti } from "./JourneyMap";
 
 type Milestone = {
   id: string;
@@ -28,11 +28,8 @@ function scrollToId(id: string) {
 }
 
 export default function SiteJourney() {
-  const [progress, setProgress] = useState(0);
   const [activeId, setActiveId] = useState(MILESTONES[0].id);
-  const [walking, setWalking] = useState(false);
   const [celebrated, setCelebrated] = useState(false);
-  const idleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const celebratedRef = useRef(false);
 
   useEffect(() => {
@@ -53,17 +50,12 @@ export default function SiteJourney() {
     const update = () => {
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       const p = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0;
-      setProgress(p);
 
       let current = sectionOffsets[0]?.id ?? MILESTONES[0].id;
       for (const s of sectionOffsets) {
         if (window.scrollY + window.innerHeight * 0.35 >= s.top) current = s.id;
       }
       setActiveId(current);
-
-      setWalking(true);
-      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
-      idleTimerRef.current = setTimeout(() => setWalking(false), 250);
 
       if (p > 0.985 && !celebratedRef.current) {
         celebratedRef.current = true;
@@ -88,7 +80,6 @@ export default function SiteJourney() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", recompute);
       clearTimeout(recomputeTimer);
-      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
     };
   }, []);
 
@@ -96,22 +87,6 @@ export default function SiteJourney() {
 
   return (
     <>
-      {/* Top progress bar — every breakpoint */}
-      <div className="fixed top-0 left-0 right-0 h-[3px] z-30 bg-[#e5e0d0]">
-        <div
-          className="h-full bg-gradient-to-r from-[#b8ca9a] via-[#a8834f] to-[#c2a87a] transition-[width] duration-150 ease-out"
-          style={{ width: `${progress * 100}%` }}
-        />
-        <div
-          className="absolute top-[3px] -translate-x-1/2 transition-[left] duration-150 ease-out pointer-events-none"
-          style={{ left: `${progress * 100}%` }}
-        >
-          <div className="scale-[0.32] origin-top -mt-1">
-            <StickCouple walking={walking} />
-          </div>
-        </div>
-      </div>
-
       {/* Vertical milestone rail — desktop only */}
       <div className="hidden xl:flex fixed right-4 top-1/2 -translate-y-1/2 z-20 flex-col items-center">
         <div className="relative flex flex-col items-center gap-0">
