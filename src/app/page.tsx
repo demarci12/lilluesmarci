@@ -3,8 +3,18 @@ import Reveal from "@/components/wedding/Reveal";
 import Countdown from "@/components/wedding/Countdown";
 import Faq from "@/components/wedding/Faq";
 import RsvpForm from "@/components/wedding/RsvpForm";
-import JourneyMap from "@/components/wedding/JourneyMap";
+import JourneyMap, { StickCouple } from "@/components/wedding/JourneyMap";
 import SiteJourney from "@/components/wedding/SiteJourney";
+import {
+  ChurchSketch,
+  VillaSketch,
+  ChampagneSketch,
+  PlaceSettingSketch,
+  MusicNoteSketch,
+  CakeSketch,
+  RingBoxSketch,
+  WreathSketch,
+} from "@/components/wedding/Sketches";
 
 const NAV_LEFT = [
   { href: "#tortenet", label: "Történetünk" },
@@ -20,10 +30,10 @@ const NAV_RIGHT = [
 ];
 
 const TIMELINE = [
-  { time: "TBA", title: "Szertartás", icon: "/sketches/church.png" },
-  { time: "TBA", title: "Fogadás & koktél", icon: "/sketches/champagne.png" },
-  { time: "TBA", title: "Vacsora", icon: "/sketches/place-setting.png" },
-  { time: "TBA", title: "Bál, mulatság", icon: "/sketches/music-note.png" },
+  { time: "TBA", title: "Szertartás", Icon: ChurchSketch },
+  { time: "TBA", title: "Fogadás & koktél", Icon: ChampagneSketch },
+  { time: "TBA", title: "Vacsora", Icon: PlaceSettingSketch },
+  { time: "TBA", title: "Bál, mulatság", Icon: MusicNoteSketch },
 ];
 
 const MENU_COURSES = [
@@ -114,7 +124,9 @@ export default function Home() {
               />
             </div>
             <div className="text-left">
-              <Image src="/sketches/couple.png" alt="" width={60} height={90} className="h-[70px] w-auto object-contain mb-2" />
+              <div className="mb-2">
+                <StickCouple walking={false} />
+              </div>
               <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">01</div>
               <div className="font-script text-[32px] text-[#a8834f] my-1 mb-3">Szeretettel várunk</div>
               <p className="text-base leading-[1.8]">
@@ -154,9 +166,9 @@ export default function Home() {
               />
             </div>
             <div>
-              <div className="flex items-end gap-3 mb-1">
-                <Image src="/sketches/church.png" alt="" width={70} height={90} className="h-[64px] w-auto object-contain" />
-                <Image src="/sketches/villa.png" alt="" width={90} height={70} className="h-[52px] w-auto object-contain" />
+              <div className="flex items-end gap-3 mb-1 text-[#3d3d2f]">
+                <ChurchSketch className="h-[64px] w-auto" />
+                <VillaSketch className="h-[52px] w-auto" />
               </div>
               <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">03</div>
               <div className="text-[13px] tracking-[0.16em] uppercase text-[#8a9668] mt-1">
@@ -179,13 +191,7 @@ export default function Home() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-10">
             {TIMELINE.map((item) => (
               <div key={item.title} className="flex flex-col items-center gap-3">
-                <Image
-                  src={item.icon}
-                  alt=""
-                  width={90}
-                  height={90}
-                  className="h-[56px] w-auto object-contain"
-                />
+                <item.Icon className="h-[52px] w-auto text-[#3d3d2f]" />
                 <div>
                   <div className="text-sm tracking-[0.08em] text-[#a8834f]">{item.time}</div>
                   <div className="text-base text-[#3d3d2f] mt-1">{item.title}</div>
@@ -210,12 +216,12 @@ export default function Home() {
       <section id="menu" className="bg-[#fcf8ef] px-6 py-[90px]">
         <Reveal className="max-w-[900px] mx-auto text-center">
           <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">05</div>
-          <div className="flex items-center justify-center gap-4 mt-2 mb-[18px]">
-            <Image src="/sketches/cake.png" alt="" width={70} height={70} className="h-[54px] w-auto object-contain" />
-            <div className="w-[84px] h-[84px] rounded-full bg-[#f6eaa9] flex items-center justify-center font-script text-[32px] text-[#3d3d2f]">
+          <div className="flex items-center justify-center gap-4 mt-2 mb-[18px] text-[#3d3d2f]">
+            <CakeSketch className="h-[50px] w-auto" />
+            <div className="w-[84px] h-[84px] rounded-full bg-[#f6eaa9] flex items-center justify-center font-script text-[32px] text-[#3d3d2f] shrink-0">
               L&amp;M
             </div>
-            <Image src="/sketches/champagne.png" alt="" width={70} height={70} className="h-[54px] w-auto object-contain" />
+            <ChampagneSketch className="h-[50px] w-auto" />
           </div>
           <div className="font-script text-[44px] text-[#3d3d2f]">Menü</div>
           <Divider />
@@ -288,7 +294,7 @@ export default function Home() {
       {/* RSVP */}
       <section id="rsvp" className="bg-[#fcf8ef] px-6 py-[90px]">
         <Reveal className="max-w-[520px] mx-auto text-center">
-          <Image src="/sketches/ring-box.png" alt="" width={80} height={80} className="h-[64px] w-auto object-contain mx-auto mb-1" />
+          <RingBoxSketch className="h-[64px] w-auto text-[#3d3d2f] mx-auto mb-1" />
           <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">09</div>
           <div className="font-script text-[44px] text-[#3d3d2f] mt-1">Visszajelzés</div>
           <Divider />
@@ -297,13 +303,8 @@ export default function Home() {
       </section>
 
       <footer id="kapcsolat" className="bg-[#3d3d2f] text-[#fcf8ef] px-6 pt-16 pb-11 text-center">
-        <div className="relative w-[104px] h-[104px] mx-auto mb-[18px]">
-          <Image
-            src="/sketches/wreath.png"
-            alt=""
-            fill
-            className="object-contain opacity-80 [filter:brightness(0)_saturate(100%)_invert(1)]"
-          />
+        <div className="relative w-[104px] h-[104px] mx-auto mb-[18px] text-[#fcf8ef]">
+          <WreathSketch className="absolute inset-0 w-full h-full opacity-90" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-16 h-16 rounded-full bg-[#f6eaa9] flex items-center justify-center font-script text-[26px] text-[#3d3d2f]">
               L&amp;M
