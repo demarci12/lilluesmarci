@@ -158,7 +158,7 @@ export default function Home() {
         </section>
       </div>
 
-      <div className="win wash pale">
+      <div className="win wash">
         <section className="dress" id="dresscode">
           <div className="wrap">
             <div className="dress-head">

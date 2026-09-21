@@ -446,7 +446,7 @@ html.locked body {
 .ol .win {
   position: relative;
   clip-path: inset(0);
-  background: #c9cf9a;
+  background: #f7f4ec;
 }
 .ol .win::before {
   content: "";
@@ -461,11 +461,7 @@ html.locked body {
   --win-size: auto 140%;
   --win-pos: 50% 100%;
   --win-img: url(/images/backdrop-champagne.jpg);
-  --win-veil: linear-gradient(rgba(224, 229, 188, 0.78), rgba(224, 229, 188, 0.78));
-}
-/* pastel white: the same painting, almost painted over */
-.ol .pale {
-  --win-veil: linear-gradient(rgba(253, 248, 240, 0.87), rgba(253, 248, 240, 0.87));
+  --win-veil: linear-gradient(rgba(251, 249, 244, 0.9), rgba(251, 249, 244, 0.9));
 }
 .ol .night {
   --win-img: url(/images/party.jpg);
