@@ -26,7 +26,7 @@ export default function Home() {
       <Reveal />
 
       {/* Light painted ground: one backdrop runs behind the first few sections */}
-      <div className="win wash">
+      <div className="win wash under">
         <section className="intro" id="varunk">
           <div className="wrap two">
             <div className="col-text">
@@ -39,7 +39,7 @@ export default function Home() {
             <div className="col-pic reveal r">
               <div className="cameo">
                 <div className="ph">
-                  <Image src="/images/intro.jpeg" alt="Lilu és Marci" fill sizes="290px" />
+                  <Image src="/images/about.jpg" alt="Lilu és Marci" fill sizes="310px" />
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function Home() {
       </div>
 
       {/* Night: the party painting stays put while the programme scrolls over it */}
-      <div className="win night scallop">
+      <div className="win night scallop under">
         <section className="programme-sec" id="idorend">
           <div className="wrap">
             <p className="label reveal">Az esküvő napja</p>
@@ -155,7 +155,7 @@ export default function Home() {
         </section>
       </div>
 
-      <div className="win wash scallop">
+      <div className="win wash scallop under">
         <section className="dress" id="dresscode">
           <div className="wrap two">
             <div className="col-pic reveal l">
