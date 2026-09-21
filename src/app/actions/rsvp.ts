@@ -28,10 +28,10 @@ export async function submitRsvp(
   const plusOnes = plusOneNames.map((name) => ({ name }));
 
   if (!fullName) {
-    return { status: "error", message: "Please enter your name." };
+    return { status: "error", message: "Kérjük, add meg a neved." };
   }
   if (!email && !phone) {
-    return { status: "error", message: "Please provide an email or phone number." };
+    return { status: "error", message: "Kérjük, adj meg egy e-mail címet vagy telefonszámot." };
   }
 
   const supabase = await createClient();
@@ -47,7 +47,7 @@ export async function submitRsvp(
   });
 
   if (error) {
-    return { status: "error", message: "Something went wrong, please try again." };
+    return { status: "error", message: "Valami hiba történt, kérjük próbáld újra." };
   }
 
   return { status: "success" };
