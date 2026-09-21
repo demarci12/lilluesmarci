@@ -469,7 +469,7 @@ html.locked body {
   color: #f7efdf;
 }
 .ol .rsvp {
-  --win-img: url(/images/couple.jpeg);
+  --win-img: url(/images/couple-painting.webp);
   --win-veil: linear-gradient(180deg, rgba(24, 20, 12, 0.66) 0%, rgba(24, 20, 12, 0.42) 42%, rgba(24, 20, 12, 0.12) 68%, rgba(24, 20, 12, 0.34) 100%);
   --win-pos: 50% 28%;
 }
