@@ -2,7 +2,6 @@ import Image from "next/image";
 import EnvelopeHero from "@/components/wedding/EnvelopeHero";
 import Reveal from "@/components/wedding/Reveal";
 import Countdown from "@/components/wedding/Countdown";
-import Expandable from "@/components/wedding/Expandable";
 import RsvpPanel from "@/components/wedding/RsvpPanel";
 
 const TIMELINE = [
@@ -42,35 +41,6 @@ export default function Home() {
                   <Image src="/images/about.jpg" alt="Lilu és Marci" fill sizes="310px" />
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="story" id="story">
-          <div className="wrap two flip">
-            <div className="col-pic reveal l">
-              <figure className="framed">
-                <div className="frame">
-                  <div className="mat">
-                    <div className="ph">
-                      <Image src="/images/hero.jpeg" alt="Lilu és Marci" fill sizes="300px" />
-                    </div>
-                  </div>
-                </div>
-                <figcaption className="plaque">Lilu &amp; Marci</figcaption>
-              </figure>
-            </div>
-            <div className="col-text">
-              <h2 className="script h-script reveal">A mi történetünk</h2>
-              <p className="lede reveal">
-                Hamarosan megírjuk, hogyan ismerkedtünk meg, mikor tudtuk, hogy ő az igazi, és hogyan jutottunk el
-                idáig.
-              </p>
-              <Expandable>
-                <p className="lede">
-                  Addig is szeretettel várunk benneteket 2027. július 10-én a kálnai Mátyás malomban.
-                </p>
-              </Expandable>
             </div>
           </div>
         </section>

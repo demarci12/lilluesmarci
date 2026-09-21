@@ -519,9 +519,6 @@ html.locked body {
   display: flex;
   justify-content: center;
 }
-.ol .two.flip .col-text {
-  order: 2;
-}
 .ol .col-text {
   min-width: 0;
 }
@@ -540,13 +537,7 @@ html.locked body {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  .ol .two.flip .col-text {
-    order: 0;
-  }
   .ol .two .col-pic {
-    order: 2;
-  }
-  .ol .two.flip .col-pic {
     order: 2;
   }
   .ol .lede {
@@ -595,76 +586,6 @@ html.locked body {
 }
 .ol .cameo img {
   object-position: 50% 38%;
-}
-
-/* 2. a small framed print, hung like a painting */
-.ol .framed {
-  position: relative;
-  width: min(330px, 78vw);
-  margin: 0;
-}
-.ol .frame {
-  position: relative;
-  padding: 14px;
-  background: linear-gradient(135deg, #6b6238 0%, #4a4224 46%, #625830 100%);
-  border-radius: 2px;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 244, 205, 0.32),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
-    0 2px 3px rgba(30, 26, 10, 0.35),
-    0 22px 38px rgba(30, 26, 10, 0.34);
-}
-/* fine wood grain along the moulding */
-.ol .frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(90deg, rgba(255, 244, 205, 0.06) 0 2px, rgba(0, 0, 0, 0.06) 2px 5px);
-  mix-blend-mode: overlay;
-}
-/* the mat sits back from the moulding, with a thin gilt fillet */
-.ol .mat {
-  position: relative;
-  padding: 24px;
-  background: #f8f3e6;
-  box-shadow:
-    0 0 0 2px #b79a4c,
-    inset 3px 4px 9px rgba(70, 58, 24, 0.28),
-    inset -1px -1px 3px rgba(255, 255, 255, 0.6);
-}
-.ol .mat .ph {
-  aspect-ratio: 4 / 5;
-  box-shadow:
-    0 0 0 1px rgba(70, 58, 24, 0.4),
-    0 0 0 3px #fdfaf0,
-    0 0 0 4px rgba(70, 58, 24, 0.2);
-}
-.ol .mat .ph::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  box-shadow: inset 2px 3px 8px rgba(0, 0, 0, 0.28);
-}
-.ol .framed img {
-  object-position: 50% 30%;
-}
-/* small brass plate under the print */
-.ol .plaque {
-  display: table;
-  margin: 18px auto 0;
-  padding: 6px 24px 5px;
-  border-radius: 2px;
-  font-size: 17px;
-  letter-spacing: 0.18em;
-  color: #3d3110;
-  background: linear-gradient(180deg, #dcc27f 0%, #b99b4d 55%, #c9ad61 100%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 246, 210, 0.7),
-    inset 0 -1px 0 rgba(80, 60, 15, 0.4),
-    0 2px 4px rgba(30, 26, 10, 0.32);
-  text-shadow: 0 1px 0 rgba(255, 246, 210, 0.55);
 }
 
 /* 3. a small invitation card — the striped mat from the envelope hero */
