@@ -11,7 +11,7 @@ export default function RsvpForm() {
   const [plusOnes, setPlusOnes] = useState(0);
 
   if (state.status === "success") {
-    return <p className="thanks">Köszönjük a visszajelzést! 🤍</p>;
+    return <p className="thanks">Köszönjük a visszajelzést!</p>;
   }
 
   return (
