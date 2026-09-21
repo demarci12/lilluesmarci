@@ -3,8 +3,10 @@ import Reveal from "@/components/wedding/Reveal";
 import Countdown from "@/components/wedding/Countdown";
 import Faq from "@/components/wedding/Faq";
 import RsvpForm from "@/components/wedding/RsvpForm";
+import JourneyMap from "@/components/wedding/JourneyMap";
 
 const NAV_LEFT = [
+  { href: "#tortenet", label: "Történetünk" },
   { href: "#helyszin", label: "Helyszín" },
   { href: "#idorend", label: "Időrend" },
   { href: "#menu", label: "Menü" },
@@ -122,8 +124,21 @@ export default function Home() {
         </Reveal>
       </section>
 
+      {/* Történetünk — interactive journey map */}
+      <section id="tortenet" className="bg-[#eff0e4] px-6 py-[90px]">
+        <Reveal className="text-center mb-10">
+          <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">02</div>
+          <div className="font-script text-[44px] text-[#3d3d2f] mt-1">Történetünk</div>
+          <Divider />
+          <p className="text-[13px] text-[#8a9668] -mt-4">Kattints, vagy lépkedj végig az utunkon.</p>
+        </Reveal>
+        <Reveal>
+          <JourneyMap />
+        </Reveal>
+      </section>
+
       {/* Helyszín */}
-      <section id="helyszin" className="bg-[#eff0e4]">
+      <section id="helyszin" className="bg-[#fcf8ef]">
         <Reveal>
           <div className="max-w-[1100px] mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div className="p-[10px] border border-[#e5e0d0] rounded-md bg-[#fcf8ef] md:order-2">
@@ -136,7 +151,7 @@ export default function Home() {
               />
             </div>
             <div>
-              <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">02</div>
+              <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">03</div>
               <div className="text-[13px] tracking-[0.16em] uppercase text-[#8a9668] mt-1">
                 Helyszín &amp; időpont
               </div>
@@ -149,9 +164,9 @@ export default function Home() {
       </section>
 
       {/* Időrend */}
-      <section id="idorend" className="bg-[#fcf8ef] px-6 py-[90px]">
+      <section id="idorend" className="bg-[#eff0e4] px-6 py-[90px]">
         <Reveal className="max-w-[640px] mx-auto text-center">
-          <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">03</div>
+          <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">04</div>
           <div className="font-script text-[44px] text-[#3d3d2f] mt-1">Időrend</div>
           <Divider />
           {TIMELINE.map((item) => (
@@ -165,9 +180,9 @@ export default function Home() {
       </section>
 
       {/* Menü */}
-      <section id="menu" className="bg-[#eff0e4] px-6 py-[90px]">
+      <section id="menu" className="bg-[#fcf8ef] px-6 py-[90px]">
         <Reveal className="max-w-[900px] mx-auto text-center">
-          <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">04</div>
+          <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">05</div>
           <div className="w-[84px] h-[84px] rounded-full bg-[#f6eaa9] flex items-center justify-center font-script text-[32px] text-[#3d3d2f] mx-auto mt-2 mb-[18px]">
             L&amp;M
           </div>
@@ -175,7 +190,7 @@ export default function Home() {
           <Divider />
           <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-[30px]">
             {MENU_COURSES.map((c) => (
-              <div key={c.course} className="border border-[#e5e0d0] rounded-md px-4 py-6 bg-[#fcf8ef]">
+              <div key={c.course} className="border border-[#e5e0d0] rounded-md px-4 py-6 bg-[#eff0e4]">
                 <div className="text-[13px] tracking-[0.16em] uppercase text-[#a8834f]">{c.course}</div>
                 <div className="text-sm text-[#8a9668] mt-2">{c.note}</div>
               </div>
@@ -185,9 +200,9 @@ export default function Home() {
       </section>
 
       {/* Szállás */}
-      <section id="szallas" className="bg-[#fcf8ef] px-6 py-[90px]">
+      <section id="szallas" className="bg-[#eff0e4] px-6 py-[90px]">
         <Reveal className="max-w-[640px] mx-auto text-center">
-          <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">05</div>
+          <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">06</div>
           <div className="font-script text-[44px] text-[#3d3d2f] mt-1">Szállás</div>
           <Divider />
           <p className="text-[15px] leading-[1.7] text-[#52514f]">
@@ -198,11 +213,11 @@ export default function Home() {
       </section>
 
       {/* Dress code */}
-      <section id="dresscode" className="bg-[#eff0e4]">
+      <section id="dresscode" className="bg-[#fcf8ef]">
         <Reveal>
           <div className="max-w-[1100px] mx-auto px-6 py-[90px] grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">06</div>
+              <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">07</div>
               <div className="font-script text-[44px] text-[#3d3d2f] my-1.5 mb-4">Dress code</div>
               <p className="text-[15px] leading-[1.7]">
                 Toszkán, rusztikus-elegáns hangulat — földszínek: ivory, zsálya, oliva és karamell árnyalatok.
@@ -216,7 +231,7 @@ export default function Home() {
               </div>
               <p className="text-[13px] text-[#8a9668] mt-[18px]">A fehér színt hagyjuk a menyasszonynak.</p>
             </div>
-            <div className="p-[10px] border border-[#e5e0d0] rounded-md bg-[#fcf8ef]">
+            <div className="p-[10px] border border-[#e5e0d0] rounded-md bg-[#eff0e4]">
               <Image
                 src="/images/dresscode.jpeg"
                 alt="Lilu és Marci"
@@ -230,9 +245,9 @@ export default function Home() {
       </section>
 
       {/* GYIK */}
-      <section id="gyik" className="bg-[#fcf8ef] px-6 py-[90px]">
+      <section id="gyik" className="bg-[#eff0e4] px-6 py-[90px]">
         <Reveal className="max-w-[640px] mx-auto">
-          <div className="text-center text-[13px] text-[#c2a87a] tracking-[0.1em]">07</div>
+          <div className="text-center text-[13px] text-[#c2a87a] tracking-[0.1em]">08</div>
           <div className="text-center font-script text-[44px] text-[#3d3d2f] mt-1">Gyakori kérdések</div>
           <Divider />
           <Faq />
@@ -240,9 +255,9 @@ export default function Home() {
       </section>
 
       {/* RSVP */}
-      <section id="rsvp" className="bg-[#eff0e4] px-6 py-[90px]">
+      <section id="rsvp" className="bg-[#fcf8ef] px-6 py-[90px]">
         <Reveal className="max-w-[520px] mx-auto text-center">
-          <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">08</div>
+          <div className="text-[13px] text-[#c2a87a] tracking-[0.1em]">09</div>
           <div className="font-script text-[44px] text-[#3d3d2f] mt-1">Visszajelzés</div>
           <Divider />
           <RsvpForm />
