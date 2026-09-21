@@ -29,8 +29,10 @@ export default function Home() {
       <section id="varunk">
         <p className="eyebrow reveal">Várunk szeretettel</p>
         <h2 className="script h-script reveal">Kálna, Mátyás malom</h2>
-        <div className="arch reveal">
-          <Image src="/images/intro.jpeg" alt="Lilu és Marci" fill sizes="320px" />
+        <div className="cameo reveal">
+          <div className="ph">
+            <Image src="/images/intro.jpeg" alt="Lilu és Marci" fill sizes="290px" />
+          </div>
         </div>
         <Countdown />
       </section>
@@ -39,8 +41,14 @@ export default function Home() {
       <section className="band" id="story">
         <p className="eyebrow reveal">Történetünk</p>
         <h2 className="script h-script reveal">A mi történetünk</h2>
-        <div className="arch reveal">
-          <Image src="/images/hero.jpeg" alt="Lilu és Marci" fill sizes="320px" />
+        <div className="reveal">
+          <div className="polaroid">
+            <span className="tape" aria-hidden="true" />
+            <div className="ph">
+              <Image src="/images/hero.jpeg" alt="Lilu és Marci" fill sizes="290px" />
+            </div>
+            <span className="cap">Lilu &amp; Marci</span>
+          </div>
         </div>
         <p className="txt reveal">
           A történetünket hamarosan részletesebben is megosztjuk veletek: hogyan ismerkedtünk meg, mikor tudtuk,
@@ -85,8 +93,12 @@ export default function Home() {
       <section id="dresscode">
         <p className="eyebrow reveal">Öltözék</p>
         <h2 className="script h-script reveal">Dress code</h2>
-        <div className="arch reveal">
-          <Image src="/images/dresscode.jpeg" alt="Lilu és Marci" fill sizes="320px" />
+        <div className="matcard reveal">
+          <div className="mat-in">
+            <div className="ph">
+              <Image src="/images/dresscode.jpeg" alt="Lilu és Marci" fill sizes="280px" />
+            </div>
+          </div>
         </div>
         <p className="txt reveal">
           Toszkán, rusztikus-elegáns hangulat — földszínek: ivory, zsálya, oliva és karamell árnyalatok.
@@ -114,8 +126,14 @@ export default function Home() {
       <section id="szallas">
         <p className="eyebrow reveal">Ahol megpihenhettek</p>
         <h2 className="script h-script reveal">Szállás</h2>
-        <div className="frame reveal">
-          <Image src="/images/venue.jpeg" alt="Kálna, Mátyás malom" fill sizes="(max-width: 600px) 90vw, 520px" />
+        <div className="album reveal">
+          <div className="ph">
+            <Image src="/images/venue.jpeg" alt="Kálna, Mátyás malom" fill sizes="(max-width: 600px) 90vw, 540px" />
+            <span className="corner tl" aria-hidden="true" />
+            <span className="corner tr" aria-hidden="true" />
+            <span className="corner bl" aria-hidden="true" />
+            <span className="corner br" aria-hidden="true" />
+          </div>
         </div>
         <p className="txt reveal">
           Szeretnénk, ha a pihenésed is kényelmes és zökkenőmentes lenne. Ajánlott szálláshelyeket a Kálna környékén
