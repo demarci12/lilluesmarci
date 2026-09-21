@@ -89,8 +89,9 @@ html.locked body {
   position: absolute;
   inset: 0;
   perspective: 1400px;
-  transform: translateY(-104px);
-  transition: transform 1.7s var(--ease) 0.35s;
+  transform: translateY(-150px) rotate(-1.1deg) scale(var(--zoom, 1));
+  transform-origin: 290px 450px;
+  transition: transform 1.9s var(--ease) 0.3s;
 }
 .ol .is-open .shift {
   transform: none;
@@ -143,33 +144,73 @@ html.locked body {
   backface-visibility: hidden;
 }
 .ol .flap .ff {
-  --c1: #82904a;
-  --c2: #69773a;
+  --c1: #7d7e46;
+  --c2: #696a3a;
 }
 .ol .flap .fb {
-  --c1: #404b21;
-  --c2: #5b6833;
+  --c1: #3c3f1f;
+  --c2: #565b2e;
   transform: rotateY(180deg);
 }
 
 /* real-paper look: canvas-generated grain + fibres blended over a colour gradient */
+.ol .opener {
+  --grain: url(/images/paper-grain.jpg);
+  --liner: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='26' height='26'><path d='M13 2.5 L23.5 13 L13 23.5 L2.5 13 Z' fill='none' stroke='%23efe6c8' stroke-opacity='.2' stroke-width='.9'/><circle cx='13' cy='13' r='1.3' fill='%23efe6c8' fill-opacity='.2'/></svg>");
+}
+/* handmade, rustic paper: a scanned-style grain of fibres, flecks and cloudy tone over a colour gradient */
 .ol .paper {
   background-color: #6f7a3a;
-  background-image: var(--paper, none), linear-gradient(180deg, var(--c1, #7a8640), var(--c2, #66722f));
+  background-image: var(--grain), linear-gradient(180deg, var(--c1, #7a8640), var(--c2, #66722f));
   background-blend-mode: soft-light, normal;
-  background-size: 256px 256px, 100% 100%;
+  background-size: 448px 448px, 100% 100%;
+}
+.ol .paper.liner {
+  background-image: var(--liner), var(--grain), linear-gradient(180deg, var(--c1, #7a8640), var(--c2, #66722f));
+  background-blend-mode: normal, soft-light, normal;
+  background-size: 26px 26px, 448px 448px, 100% 100%;
 }
 .ol .env-back {
-  --c1: #3b4620;
-  --c2: #59662f;
+  --c1: #3c3f1f;
+  --c2: #565b2e;
 }
-.ol .clasp {
+/* the inside of the pocket falls into shadow toward the opening */
+.ol .env-back::after {
+  content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #d6c583, #9b8a44 65%, #6c5f2b);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 12, 3, 0.42), rgba(8, 12, 3, 0) 55%);
+  pointer-events: none;
+}
+.ol .flap-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 20px;
+  z-index: 2;
+  text-align: center;
+  color: #f4edd7;
+  text-shadow: 0 -1px 0 rgba(12, 14, 4, 0.4), 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+.ol .flap-text .ft-k {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+}
+.ol .flap-text .ft-n {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--script);
+  font-variant: normal;
+  font-size: 40px;
+  line-height: 1.1;
+}
+.ol .flap .shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 .ol .sides-wrap,
 .ol .bf-wrap {
@@ -180,7 +221,7 @@ html.locked body {
   filter: drop-shadow(0 2px 5px rgba(20, 26, 10, 0.38));
 }
 .ol .bf-wrap {
-  filter: drop-shadow(0 -3px 4px rgba(20, 26, 10, 0.42));
+  filter: drop-shadow(0 -1px 2px rgba(12, 16, 4, 0.4));
 }
 .ol .pc {
   position: absolute;
@@ -188,18 +229,18 @@ html.locked body {
 }
 .ol .pl {
   clip-path: polygon(0 0, 37.5% 47.67%, 0 100%);
-  --c1: #84914a;
-  --c2: #67733a;
+  --c1: #777840;
+  --c2: #5d5e33;
 }
 .ol .pr {
   clip-path: polygon(100% 0, 62.5% 47.67%, 100% 100%);
-  --c1: #7c8944;
-  --c2: #616e33;
+  --c1: #707139;
+  --c2: #565730;
 }
 .ol .pb {
   clip-path: polygon(37.5% 47.67%, 62.5% 47.67%, 100% 100%, 0 100%);
-  --c1: #7f8b45;
-  --c2: #6a7735;
+  --c1: #75763e;
+  --c2: #616235;
 }
 .ol .mono {
   position: absolute;
@@ -247,27 +288,15 @@ html.locked body {
 .ol .is-open .flap-shadow {
   opacity: 0;
 }
-.ol .paper-seal {
-  background-color: #8f9a55;
-}
 .ol .flap .seal {
   position: absolute;
   left: 50%;
-  top: 104px;
-  width: 64px;
-  height: 64px;
-  margin-left: -32px;
-  border-radius: 50%;
+  top: 100px;
+  width: 86px;
+  height: 100px;
+  margin-left: -43px;
   z-index: 3;
-  background: radial-gradient(circle at 35% 30%, #b9c27c, #8f9a55 60%, #6f7a3a);
-  box-shadow: 0 3px 8px rgba(30, 36, 16, 0.45), inset 0 0 0 3px rgba(255, 255, 255, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--script);
-  font-variant: normal;
-  font-size: 26px;
-  color: #f3efd9;
+  filter: drop-shadow(0 2px 2px rgba(18, 12, 2, 0.55)) drop-shadow(0 8px 8px rgba(18, 12, 2, 0.38));
   transition: opacity 0.3s;
 }
 .ol .is-open .seal {
@@ -284,12 +313,12 @@ html.locked body {
   position: absolute;
   left: 0;
   right: 0;
-  top: 632px;
+  top: 548px;
   text-align: center;
-  font-size: 17px;
-  letter-spacing: 0.14em;
-  color: #fff;
-  text-shadow: 0 1px 8px rgba(30, 36, 16, 0.6);
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  color: #f4edd7;
+  text-shadow: 0 -1px 0 rgba(12, 14, 4, 0.4), 0 1px 0 rgba(255, 255, 255, 0.14);
   z-index: 7;
   animation: olPulse 2.2s ease-in-out infinite;
   transition: opacity 0.5s;
@@ -362,6 +391,12 @@ html.locked body {
   color: var(--ink);
   letter-spacing: 0;
 }
+.ol .card-in .name,
+.ol .card-in .kicker,
+.ol .card-in .date,
+.ol .card-in .place {
+  text-shadow: 0 0.7px 0 rgba(255, 255, 255, 0.85), 0 -0.4px 0 rgba(40, 36, 20, 0.14);
+}
 .ol .n1 { top: 80px; }
 .ol .amp { top: 132px; font-size: 38px; }
 .ol .n2 { top: 174px; }
@@ -389,10 +424,10 @@ html.locked body {
   top: 300px;
   width: 431px;
   height: 300px;
-  filter: drop-shadow(0 14px 14px rgba(40, 44, 15, 0.35));
+  filter: drop-shadow(0 3px 3px rgba(16, 20, 6, 0.45)) drop-shadow(0 24px 28px rgba(16, 20, 6, 0.5));
 }
 .ol .env-back { z-index: 0; }
-.ol .env-front { z-index: 5; pointer-events: none; }
+.ol .env-front { z-index: 5; pointer-events: none; filter: none; }
 
 /* ---------- SECTIONS ---------- */
 .ol section,
@@ -426,7 +461,11 @@ html.locked body {
   --win-size: auto 140%;
   --win-pos: 50% 100%;
   --win-img: url(/images/backdrop-champagne.jpg);
-  --win-veil: linear-gradient(rgba(214, 220, 164, 0.74), rgba(214, 220, 164, 0.74));
+  --win-veil: linear-gradient(rgba(224, 229, 188, 0.78), rgba(224, 229, 188, 0.78));
+}
+/* pastel white: the same painting, almost painted over */
+.ol .pale {
+  --win-veil: linear-gradient(rgba(253, 248, 240, 0.87), rgba(253, 248, 240, 0.87));
 }
 .ol .night {
   --win-img: url(/images/party.jpg);
@@ -434,26 +473,11 @@ html.locked body {
   color: #f7efdf;
 }
 .ol .rsvp {
-  --win-img: url(/images/backdrop-venue.jpg);
-  --win-veil: linear-gradient(rgba(22, 24, 10, 0.6), rgba(22, 24, 10, 0.6));
+  --win-img: url(/images/couple.jpeg);
+  --win-veil: linear-gradient(180deg, rgba(24, 20, 12, 0.66) 0%, rgba(24, 20, 12, 0.42) 42%, rgba(24, 20, 12, 0.12) 68%, rgba(24, 20, 12, 0.34) 100%);
+  --win-pos: 50% 28%;
 }
 
-/* each block is painted over the one above it: a dry-brush edge instead of a straight cut.
-   The tile is 1600px wide, repeats seamlessly and is 80px tall (edge line about 26px down).
-   The block overlaps the previous one by the full tile height, so gaps in the brushwork show that block. */
-.ol .scallop {
-  margin-top: -80px;
-  padding-top: 44px;
-  -webkit-mask:
-    url(/images/brush-edge.png) 0 0 / 1600px 80px repeat-x,
-    linear-gradient(#000 0 0) 0 80px / 100% calc(100% - 80px) no-repeat;
-  mask:
-    url(/images/brush-edge.png) 0 0 / 1600px 80px repeat-x,
-    linear-gradient(#000 0 0) 0 80px / 100% calc(100% - 80px) no-repeat;
-}
-.ol .under {
-  padding-bottom: 64px;
-}
 .ol .reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -577,48 +601,74 @@ html.locked body {
   object-position: 50% 38%;
 }
 
-/* 2. polaroid print held with a strip of tape */
-.ol .polaroid {
+/* 2. a small framed print, hung like a painting */
+.ol .framed {
   position: relative;
-  width: min(300px, 76vw);
-  padding: 14px 14px 62px;
-  background: #fbf8f1;
-  transform: rotate(-3deg);
-  transition: transform 0.6s var(--ease);
-  box-shadow: 0 18px 38px rgba(40, 44, 16, 0.32), 0 2px 6px rgba(40, 44, 16, 0.24);
+  width: min(330px, 78vw);
+  margin: 0;
 }
-.ol .polaroid:hover {
-  transform: rotate(-1deg) scale(1.02);
+.ol .frame {
+  position: relative;
+  padding: 14px;
+  background: linear-gradient(135deg, #6b6238 0%, #4a4224 46%, #625830 100%);
+  border-radius: 2px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 244, 205, 0.32),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    0 2px 3px rgba(30, 26, 10, 0.35),
+    0 22px 38px rgba(30, 26, 10, 0.34);
 }
-.ol .polaroid .ph {
-  aspect-ratio: 1 / 1.08;
-}
-.ol .polaroid img {
-  object-position: 50% 26%;
-}
-.ol .polaroid .cap {
+/* fine wood grain along the moulding */
+.ol .frame::before {
+  content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 14px;
-  text-align: center;
-  font-family: var(--script);
-  font-variant: normal;
-  font-size: 32px;
-  line-height: 1;
-  color: var(--ink);
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(90deg, rgba(255, 244, 205, 0.06) 0 2px, rgba(0, 0, 0, 0.06) 2px 5px);
+  mix-blend-mode: overlay;
 }
-.ol .polaroid .tape {
+/* the mat sits back from the moulding, with a thin gilt fillet */
+.ol .mat {
+  position: relative;
+  padding: 24px;
+  background: #f8f3e6;
+  box-shadow:
+    0 0 0 2px #b79a4c,
+    inset 3px 4px 9px rgba(70, 58, 24, 0.28),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.6);
+}
+.ol .mat .ph {
+  aspect-ratio: 4 / 5;
+  box-shadow:
+    0 0 0 1px rgba(70, 58, 24, 0.4),
+    0 0 0 3px #fdfaf0,
+    0 0 0 4px rgba(70, 58, 24, 0.2);
+}
+.ol .mat .ph::after {
+  content: "";
   position: absolute;
-  left: 50%;
-  top: -17px;
-  width: 116px;
-  height: 34px;
-  margin-left: -58px;
-  transform: rotate(2.5deg);
-  background: rgba(246, 241, 226, 0.6);
-  box-shadow: 0 1px 3px rgba(20, 24, 8, 0.2);
-  clip-path: polygon(0 0, 100% 0, 98% 25%, 100% 50%, 98% 75%, 100% 100%, 0 100%, 2% 75%, 0 50%, 2% 25%);
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 2px 3px 8px rgba(0, 0, 0, 0.28);
+}
+.ol .framed img {
+  object-position: 50% 30%;
+}
+/* small brass plate under the print */
+.ol .plaque {
+  display: table;
+  margin: 18px auto 0;
+  padding: 6px 24px 5px;
+  border-radius: 2px;
+  font-size: 17px;
+  letter-spacing: 0.18em;
+  color: #3d3110;
+  background: linear-gradient(180deg, #dcc27f 0%, #b99b4d 55%, #c9ad61 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 246, 210, 0.7),
+    inset 0 -1px 0 rgba(80, 60, 15, 0.4),
+    0 2px 4px rgba(30, 26, 10, 0.32);
+  text-shadow: 0 1px 0 rgba(255, 246, 210, 0.55);
 }
 
 /* 3. a small invitation card — the striped mat from the envelope hero */
@@ -773,8 +823,12 @@ html.locked body {
 .ol .rsvp {
   color: #fff;
   text-align: center;
-  padding-top: calc(44px + clamp(64px, 9vw, 116px));
-  padding-bottom: calc(64px + clamp(72px, 10vw, 124px));
+  min-height: min(100svh, 880px);
+  padding-top: clamp(64px, 9vw, 116px);
+  padding-bottom: clamp(72px, 10vw, 124px);
+}
+.ol .rsvp::before {
+  position: absolute;
 }
 .ol .rsvp .script {
   color: #fff;
@@ -860,7 +914,7 @@ html.locked body {
 
 .ol footer.win {
   text-align: center;
-  padding-top: calc(44px + 56px);
+  padding-top: 72px;
   padding-bottom: 80px;
 }
 .ol .oval {
@@ -951,18 +1005,10 @@ html.locked body {
   align-self: center;
   padding: 72px 56px 72px max(24px, calc((100vw - 1040px) / 2));
 }
-/* the painting runs into the block below, and its inner edge is brushed rather than cut */
 .ol .split-pic {
   position: relative;
   grid-column: 2;
   grid-row: 1;
-  margin-bottom: -64px;
-  -webkit-mask:
-    url(/images/brush-edge-v.png) 0 0 / 80px 1600px repeat-y,
-    linear-gradient(#000 0 0) 80px 0 / calc(100% - 80px) 100% no-repeat;
-  mask:
-    url(/images/brush-edge-v.png) 0 0 / 80px 1600px repeat-y,
-    linear-gradient(#000 0 0) 80px 0 / calc(100% - 80px) 100% no-repeat;
 }
 .ol .split-pic img {
   object-fit: cover;
@@ -993,13 +1039,6 @@ html.locked body {
     grid-column: 1;
     grid-row: 1;
     height: 340px;
-    margin-bottom: 0;
-    -webkit-mask:
-      url(/images/brush-edge-b.png) 0 100% / 1600px 80px repeat-x,
-      linear-gradient(#000 0 0) 0 0 / 100% calc(100% - 80px) no-repeat;
-    mask:
-      url(/images/brush-edge-b.png) 0 100% / 1600px 80px repeat-x,
-      linear-gradient(#000 0 0) 0 0 / 100% calc(100% - 80px) no-repeat;
   }
   .ol .split-text {
     grid-column: 1;
@@ -1059,6 +1098,44 @@ html.locked body {
 .ol .gift .lede {
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Dress code: the illustration is multiplied onto the painted ground, so its white paper drops out */
+.ol .dress-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(20px, 6vw, 88px);
+  align-items: end;
+}
+.ol .dress-head .lede {
+  margin-top: 0;
+}
+.ol .dress-art {
+  position: relative;
+  left: 50%;
+  width: min(1180px, calc(100vw - 24px));
+  margin: clamp(24px, 4vw, 48px) 0 0 calc(min(1180px, calc(100vw - 24px)) / -2);
+  mix-blend-mode: multiply;
+}
+.ol .dress-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* lift the paper white to true white so the multiply leaves no box edge */
+  filter: brightness(1.05) contrast(1.02);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent), linear-gradient(180deg, transparent, #000 9%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent), linear-gradient(180deg, transparent, #000 9%, #000 90%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+@media (max-width: 800px) {
+  .ol .dress-head {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .ol .dress-head .swatches {
+    justify-content: center;
+  }
 }
 
 .ol .swatches {

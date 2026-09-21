@@ -26,7 +26,7 @@ export default function Home() {
       <Reveal />
 
       {/* Light painted ground: one backdrop runs behind the first few sections */}
-      <div className="win wash under">
+      <div className="win wash">
         <section className="intro" id="varunk">
           <div className="wrap two">
             <div className="col-text">
@@ -49,13 +49,16 @@ export default function Home() {
         <section className="story" id="story">
           <div className="wrap two flip">
             <div className="col-pic reveal l">
-              <div className="polaroid">
-                <span className="tape" aria-hidden="true" />
-                <div className="ph">
-                  <Image src="/images/hero.jpeg" alt="Lilu és Marci" fill sizes="290px" />
+              <figure className="framed">
+                <div className="frame">
+                  <div className="mat">
+                    <div className="ph">
+                      <Image src="/images/hero.jpeg" alt="Lilu és Marci" fill sizes="300px" />
+                    </div>
+                  </div>
                 </div>
-                <span className="cap">Lilu &amp; Marci</span>
-              </div>
+                <figcaption className="plaque">Lilu &amp; Marci</figcaption>
+              </figure>
             </div>
             <div className="col-text">
               <h2 className="script h-script reveal">A mi történetünk</h2>
@@ -122,7 +125,7 @@ export default function Home() {
       </div>
 
       {/* Night: the party painting stays put while the programme scrolls over it */}
-      <div className="win night scallop under">
+      <div className="win night">
         <section className="programme-sec" id="idorend">
           <div className="wrap">
             <p className="label reveal">Az esküvő napja</p>
@@ -155,31 +158,35 @@ export default function Home() {
         </section>
       </div>
 
-      <div className="win wash scallop under">
+      <div className="win wash pale">
         <section className="dress" id="dresscode">
-          <div className="wrap two">
-            <div className="col-pic reveal l">
-              <div className="matcard">
-                <div className="mat-in">
-                  <div className="ph">
-                    <Image src="/images/dresscode.jpeg" alt="Lilu és Marci" fill sizes="280px" />
-                  </div>
+          <div className="wrap">
+            <div className="dress-head">
+              <div>
+                <p className="label reveal">Öltözék</p>
+                <h2 className="script h-script reveal">Dress code</h2>
+              </div>
+              <div>
+                <p className="lede reveal">
+                  Toszkán, rusztikus-elegáns hangulat: földszínek, ivory, zsálya, oliva és karamell árnyalatok.
+                </p>
+                <div className="swatches reveal" aria-hidden="true">
+                  {SWATCHES.map((color) => (
+                    <span key={color} style={{ background: color }} />
+                  ))}
                 </div>
+                <p className="note reveal">A fehér színt hagyjuk a menyasszonynak.</p>
               </div>
             </div>
-            <div className="col-text">
-              <p className="label reveal">Öltözék</p>
-              <h2 className="script h-script reveal">Dress code</h2>
-              <p className="lede reveal">
-                Toszkán, rusztikus-elegáns hangulat: földszínek, ivory, zsálya, oliva és karamell árnyalatok.
-              </p>
-              <div className="swatches reveal" aria-hidden="true">
-                {SWATCHES.map((color) => (
-                  <span key={color} style={{ background: color }} />
-                ))}
-              </div>
-              <p className="note reveal">A fehér színt hagyjuk a menyasszonynak.</p>
-            </div>
+          </div>
+          <div className="dress-art reveal">
+            <Image
+              src="/images/dresscode-art.webp"
+              alt="Öltözködési ötletek: krém, zsálya, oliva és karamell ruhák, fekete öltönyök"
+              width={1536}
+              height={1024}
+              sizes="(max-width: 1180px) 100vw, 1180px"
+            />
           </div>
         </section>
 
@@ -212,7 +219,7 @@ export default function Home() {
       </div>
 
       {/* RSVP */}
-      <section className="win rsvp scallop" id="rsvp">
+      <section className="win rsvp" id="rsvp">
         <div className="wrap">
           <p className="label reveal">Válaszotokat kérjük</p>
           <h2 className="script h-script reveal">Ott lesztek?</h2>
@@ -220,7 +227,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="win wash scallop">
+      <footer className="win wash">
         <div className="wrap">
           <div className="oval">
             <span className="script">LM</span>
