@@ -4,6 +4,7 @@ import Countdown from "@/components/wedding/Countdown";
 import Faq from "@/components/wedding/Faq";
 import RsvpForm from "@/components/wedding/RsvpForm";
 import JourneyMap from "@/components/wedding/JourneyMap";
+import SiteJourney from "@/components/wedding/SiteJourney";
 
 const NAV_LEFT = [
   { href: "#tortenet", label: "Történetünk" },
@@ -45,6 +46,7 @@ function Divider({ dot = "#a8834f" }: { dot?: string }) {
 export default function Home() {
   return (
     <div className="font-sans text-[#52514f] bg-[#fcf8ef]">
+      <SiteJourney />
       <nav className="sticky top-0 z-20 bg-[#fcf8ef]/95 backdrop-blur-sm border-b border-[#e5e0d0] flex items-center justify-center gap-[22px] overflow-x-auto px-5 py-3 whitespace-nowrap">
         {NAV_LEFT.map((item) => (
           <a
@@ -68,7 +70,7 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="relative min-h-[640px] flex items-center justify-center text-center overflow-hidden">
+      <section id="hero" className="relative min-h-[640px] flex items-center justify-center text-center overflow-hidden">
         <Image
           src="/images/hero.jpeg"
           alt="Lilu és Marci"
@@ -99,7 +101,7 @@ export default function Home() {
       </section>
 
       {/* Intro */}
-      <section className="bg-[#fcf8ef]">
+      <section id="intro" className="bg-[#fcf8ef]">
         <Reveal>
           <div className="max-w-[1100px] mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="p-[10px] border border-[#e5e0d0] rounded-md">

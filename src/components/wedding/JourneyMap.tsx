@@ -25,7 +25,7 @@ const PATH_D =
   "S 560 620, 640 620 " +
   "S 780 140, 940 380";
 
-function StickCouple({ walking }: { walking: boolean }) {
+export function StickCouple({ walking }: { walking: boolean }) {
   return (
     <svg
       viewBox="0 0 90 70"
@@ -68,7 +68,7 @@ const CONFETTI_PIECES = Array.from({ length: 24 }, (_, i) => ({
   color: ["#a8834f", "#7c8c5b", "#c2a87a", "#b8ca9a", "#f6eaa9"][i % 5],
 }));
 
-function Confetti() {
+export function Confetti() {
   const pieces = CONFETTI_PIECES;
 
   return (
