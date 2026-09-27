@@ -150,6 +150,13 @@ html {
   background: #f1ede3;
 }
 
+.ol .rsvp-button:disabled {
+  opacity: 0.55;
+  cursor: progress;
+  color: inherit;
+  background: transparent;
+}
+
 .ol .photo-placeholder {
   position: absolute;
   right: 0.75rem;
