@@ -133,13 +133,15 @@ export default function Home() {
 
               <figure data-reveal className="reveal image-reveal relative z-10 ml-auto mt-[-4rem] w-[82%] md:mt-[-11rem] md:w-[43%]">
                 <div className="relative aspect-[4/5] overflow-hidden bg-[#c8c2b3]">
-                  <Image
-                    src="/images/about.jpg"
-                    alt="Lilla és Marton meghitt pillanata"
-                    fill
-                    sizes="(max-width: 768px) 82vw, 43vw"
-                    className="parallax-image h-[115%] w-full object-cover grayscale-[18%] sepia-[12%]"
-                  />
+                  <div className="parallax-image absolute inset-x-0 top-0 h-[125%]">
+                    <Image
+                      src="/images/about.jpg"
+                      alt="Lilla és Marton meghitt pillanata"
+                      fill
+                      sizes="(max-width: 768px) 82vw, 43vw"
+                      className="object-cover grayscale-[18%] sepia-[12%]"
+                    />
+                  </div>
                 </div>
                 <figcaption className="mt-4 flex justify-between text-[9px] uppercase tracking-[0.25em] text-[#6e715e]">
                   <span>Egy nap, amit sosem felejtünk el</span><span>01 / 03</span>
