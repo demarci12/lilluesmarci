@@ -399,8 +399,12 @@ export default function Home() {
                   data-reveal
                   className={`image-reveal reveal relative overflow-hidden ${index % 2 ? "aspect-[3/4] md:mt-10" : "aspect-[3/4]"}`}
                 >
-                  <img src={src} alt={`${label} placeholder fotó`} className="h-full w-full object-cover" />
-                  <figcaption className="photo-placeholder">Placeholder · {label}</figcaption>
+                  <img
+                    src={src}
+                    alt={src.startsWith("/") ? `Lilla és Marton – ${label}` : `${label} placeholder fotó`}
+                    className="h-full w-full object-cover"
+                  />
+                  {!src.startsWith("/") && <figcaption className="photo-placeholder">Placeholder · {label}</figcaption>}
                 </figure>
               ))}
             </div>
