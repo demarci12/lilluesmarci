@@ -43,13 +43,21 @@ html {
   pointer-events: none;
 }
 
+.ol .olive-drawing {
+  --stem-delay: 0.6s;
+}
+
+.ol .olive-drawing-delayed {
+  --stem-delay: 1s;
+}
+
 .ol .branch-line {
   stroke: currentColor;
   stroke-width: 1.25;
   stroke-linecap: round;
   stroke-dasharray: 390;
   stroke-dashoffset: 390;
-  animation: ol-branch-draw 2.5s 0.6s ease-out forwards;
+  animation: ol-branch-draw 2.5s var(--stem-delay, 0.6s) ease-out forwards;
 }
 
 .ol .branch-leaf {
@@ -58,16 +66,16 @@ html {
   animation: ol-leaf-in 0.7s ease-out forwards;
 }
 
-.ol .branch-leaf:nth-of-type(2) { animation-delay: 0.9s; }
-.ol .branch-leaf:nth-of-type(3) { animation-delay: 1.04s; }
-.ol .branch-leaf:nth-of-type(4) { animation-delay: 1.18s; }
-.ol .branch-leaf:nth-of-type(5) { animation-delay: 1.32s; }
-.ol .branch-leaf:nth-of-type(6) { animation-delay: 1.46s; }
-.ol .branch-leaf:nth-of-type(7) { animation-delay: 1.6s; }
-.ol .branch-leaf:nth-of-type(8) { animation-delay: 1.74s; }
-.ol .branch-leaf:nth-of-type(9) { animation-delay: 1.88s; }
-.ol .branch-leaf:nth-of-type(10) { animation-delay: 2.02s; }
-.ol .olive-drawing-delayed .branch-line { animation-delay: 1s; }
+/* Each leaf fades in just after the (ease-out) stem stroke passes it. */
+.ol .branch-leaf:nth-of-type(1) { animation-delay: calc(var(--stem-delay, 0.6s) + 0.25s); }
+.ol .branch-leaf:nth-of-type(2) { animation-delay: calc(var(--stem-delay, 0.6s) + 0.35s); }
+.ol .branch-leaf:nth-of-type(3) { animation-delay: calc(var(--stem-delay, 0.6s) + 0.5s); }
+.ol .branch-leaf:nth-of-type(4) { animation-delay: calc(var(--stem-delay, 0.6s) + 0.62s); }
+.ol .branch-leaf:nth-of-type(5) { animation-delay: calc(var(--stem-delay, 0.6s) + 0.76s); }
+.ol .branch-leaf:nth-of-type(6) { animation-delay: calc(var(--stem-delay, 0.6s) + 0.93s); }
+.ol .branch-leaf:nth-of-type(7) { animation-delay: calc(var(--stem-delay, 0.6s) + 1.12s); }
+.ol .branch-leaf:nth-of-type(8) { animation-delay: calc(var(--stem-delay, 0.6s) + 1.36s); }
+.ol .branch-leaf:nth-of-type(9) { animation-delay: calc(var(--stem-delay, 0.6s) + 1.64s); }
 
 .ol .nav-link {
   position: relative;
