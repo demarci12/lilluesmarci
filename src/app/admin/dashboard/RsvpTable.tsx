@@ -23,6 +23,8 @@ export default function RsvpTable({ rsvps }: { rsvps: RsvpRow[] }) {
             <th>Guests</th>
             <th>Plus-ones</th>
             <th>Dietary</th>
+            <th>Accommodation</th>
+            <th>Transfer</th>
             <th>Message</th>
             <th>Status</th>
           </tr>
@@ -41,6 +43,8 @@ export default function RsvpTable({ rsvps }: { rsvps: RsvpRow[] }) {
                 {r.plus_ones.map((p) => p.name).join(", ") || "—"}
               </td>
               <td className="text-sm">{r.dietary_restrictions || "—"}</td>
+              <td className="text-sm">{r.accommodation_help || "—"}</td>
+              <td className="text-sm">{r.transfer_choice || "—"}</td>
               <td className="text-sm max-w-xs truncate">{r.message || "—"}</td>
               <td>
                 <select
@@ -62,7 +66,7 @@ export default function RsvpTable({ rsvps }: { rsvps: RsvpRow[] }) {
           ))}
           {rsvps.length === 0 && (
             <tr>
-              <td colSpan={8} className="text-center text-base-content/60 py-8">
+              <td colSpan={10} className="text-center text-base-content/60 py-8">
                 No RSVPs yet.
               </td>
             </tr>

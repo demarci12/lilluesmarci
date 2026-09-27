@@ -22,6 +22,8 @@ export async function submitRsvp(
   const dietaryRestrictions = String(
     formData.get("dietary_restrictions") ?? ""
   ).trim();
+  const accommodationHelp = String(formData.get("accommodation") ?? "").trim();
+  const transferChoice = String(formData.get("transfer") ?? "").trim();
   const message = String(formData.get("message") ?? "").trim();
 
   const plusOneNames = formData.getAll("plus_one_name").map(String).filter(Boolean);
@@ -43,6 +45,8 @@ export async function submitRsvp(
     guest_count: attending ? Math.max(1, guestCount) : 0,
     plus_ones: attending ? plusOnes : [],
     dietary_restrictions: dietaryRestrictions || null,
+    accommodation_help: attending ? accommodationHelp || null : null,
+    transfer_choice: attending ? transferChoice || null : null,
     message: message || null,
   });
 
@@ -62,6 +66,8 @@ export type RsvpRow = {
   guest_count: number;
   plus_ones: { name: string }[];
   dietary_restrictions: string | null;
+  accommodation_help: string | null;
+  transfer_choice: string | null;
   message: string | null;
   status: "pending" | "confirmed" | "declined";
   created_at: string;

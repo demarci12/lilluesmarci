@@ -28,7 +28,7 @@
 
 @theme inline {
   --font-serif: var(--font-serif-raw), Georgia, serif;
-  --font-script: var(--font-script-raw), "Snell Roundhand", cursive;
+  --font-sans: var(--font-sans-raw), sans-serif;
 }
 
 body {

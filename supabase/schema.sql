@@ -13,6 +13,9 @@ create table if not exists public.rsvps (
   updated_at timestamptz not null default now()
 );
 
+alter table public.rsvps add column if not exists accommodation_help text;
+alter table public.rsvps add column if not exists transfer_choice text;
+
 create index if not exists rsvps_status_idx on public.rsvps (status);
 
 create or replace function public.set_updated_at()
