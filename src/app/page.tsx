@@ -46,7 +46,13 @@ export default function Home() {
               <a className="nav-link" href="#gyik">GYIK</a>
               <a className="nav-link" href="#rsvp">RSVP</a>
             </div>
-            <span>10 · 07 · 27</span>
+            <span className="hidden md:inline">10 · 07 · 27</span>
+            <a
+              href="#rsvp"
+              className="-my-4 -mr-2 py-4 pl-4 pr-2 underline decoration-[#73785f]/60 underline-offset-4 md:hidden"
+            >
+              RSVP
+            </a>
           </nav>
 
           <div className="relative mx-auto min-h-[calc(100svh-87px)] max-w-[1500px]">
@@ -84,7 +90,7 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="flex overflow-x-auto border-y border-[#73785f]/35 bg-[#f3efe5] px-6">
+        <div className="flex border-y border-[#73785f]/35 bg-[#f3efe5] md:px-6">
           {[
             ["Program", "#program"],
             ["Útvonal", "#megkozelites"],
@@ -92,7 +98,7 @@ export default function Home() {
             ["GYIK", "#gyik"],
             ["RSVP", "#rsvp"],
           ].map(([label, href]) => (
-            <a key={href} href={href} className="min-w-max flex-1 border-r border-[#73785f]/35 px-7 py-5 text-center text-[9px] uppercase tracking-[0.28em] last:border-r-0">
+            <a key={href} href={href} className="min-w-0 flex-1 border-r border-[#73785f]/35 px-1 py-5 text-center text-[9px] uppercase tracking-[0.14em] last:border-r-0 md:min-w-max md:px-7 md:tracking-[0.28em]">
               {label}
             </a>
           ))}
