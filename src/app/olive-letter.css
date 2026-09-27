@@ -230,6 +230,7 @@ html {
   padding: 0.55rem 0 0.9rem;
   font-family: var(--font-serif-raw), "Cormorant Garamond", Georgia, serif;
   font-size: 1.35rem;
+  font-variant-numeric: lining-nums;
 }
 
 .ol .rsvp-field select option {
