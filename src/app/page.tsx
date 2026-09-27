@@ -12,24 +12,20 @@ const timeline = [
   { time: "05", text: "Transzfer haza", detail: "Az este folyamán több indulással biztosítunk transzfert az etyeki szállásokhoz és Budapestre is." },
 ];
 
-// photos.couple and photos.branch are real photos (public/images); the rest are
-// Figma-export placeholders until real shots exist for those slots.
+// Wedding-party slots are still Figma-export placeholders until real shots exist.
 const photos = {
-  coupleTwo:
-    "https://images.unsplash.com/photo-1694231270668-29aed6da9a8f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=1200",
-  grove:
-    "https://images.unsplash.com/photo-1768365336490-962733951685?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=1400",
-  coupleThree:
-    "https://images.unsplash.com/photo-1571753217087-980e556e16ea?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=1000",
   bridesmaids:
     "https://images.unsplash.com/photo-1598167563284-f00d0055eaa6?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=1200",
   groomsmen:
     "https://images.unsplash.com/photo-1707190980959-c1821df3fa7e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=1200",
-  memoryOne:
-    "https://images.unsplash.com/photo-1787299674678-76400aee9d51?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=900",
-  memoryTwo:
-    "https://images.unsplash.com/photo-1780383925160-503f1ad2a6a9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=900",
 };
+
+const gallery = [
+  { src: "/images/engagement-ring.jpg", alt: "Lilla a gyűrűjét mutatja" },
+  { src: "/images/engagement-lift.jpg", alt: "Marton felemeli Lillát" },
+  { src: "/images/engagement-chapel.jpg", alt: "Lilla és Marton a kápolna mellett" },
+  { src: "/images/engagement-carry.jpg", alt: "Marton a vállán viszi Lillát" },
+];
 
 export default function Home() {
   return (
@@ -169,8 +165,13 @@ export default function Home() {
                 Mennyire ismertek bennünket? Tippeljetek – a megfejtéseket az esküvőn eláruljuk.
               </p>
               <figure className="image-reveal reveal relative mt-14 aspect-[4/5] max-w-sm overflow-hidden" data-reveal>
-                <img src={photos.coupleTwo} alt="Lilla és Marton közös fotójának helye" className="h-full w-full object-cover opacity-80" />
-                <figcaption className="photo-placeholder">Placeholder · ide jön a közös fotónk</figcaption>
+                <Image
+                  src="/images/engagement-carry.jpg"
+                  alt="Marton a vállán viszi Lillát, mindketten nevetnek"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 384px"
+                  className="object-cover"
+                />
               </figure>
             </div>
             <Quiz />
@@ -201,12 +202,22 @@ export default function Home() {
             </div>
             <div className="mt-16 grid items-end gap-6 md:grid-cols-12">
               <figure data-reveal className="image-reveal reveal relative aspect-[4/5] overflow-hidden md:col-span-5">
-                <img src={photos.coupleThree} alt="Közös fotó helye" className="h-full w-full object-cover" />
-                <figcaption className="photo-placeholder">Placeholder · közös portré</figcaption>
+                <Image
+                  src="/images/engagement-lift.jpg"
+                  alt="Marton felemeli Lillát a naplementében"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover"
+                />
               </figure>
               <figure data-reveal className="image-reveal reveal relative aspect-[5/4] overflow-hidden md:col-span-6 md:col-start-7 md:mb-16">
-                <img src={photos.grove} alt="Közös fotó helye" className="h-full w-full object-cover" />
-                <figcaption className="photo-placeholder">Placeholder · kedvenc közös pillanat</figcaption>
+                <Image
+                  src="/images/engagement-chapel.jpg"
+                  alt="Lilla és Marton a fűben ülnek, mögöttük egy kápolna"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                  className="object-cover object-[50%_45%]"
+                />
               </figure>
             </div>
           </div>
@@ -240,8 +251,13 @@ export default function Home() {
               </div>
             </div>
             <figure data-reveal className="image-reveal reveal relative aspect-[4/5] overflow-hidden lg:col-span-6 lg:col-start-7">
-              <img src={photos.coupleTwo} alt="Kerti elegáns öltözet inspiráció" className="h-full w-full object-cover opacity-85" />
-              <figcaption className="photo-placeholder">Hangulatkép · később cserélhető</figcaption>
+              <Image
+                src="/images/engagement-grass.jpg"
+                alt="Lilla és Marton a fűben, nyári földszínekben"
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover"
+              />
             </figure>
           </div>
         </section>
@@ -380,31 +396,21 @@ export default function Home() {
           <div className="mx-auto max-w-[1500px]">
             <div data-reveal className="reveal mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
               <div>
-                <p className="text-[9px] uppercase tracking-[0.35em] text-[#b8bda4]">Fotóhelyek</p>
+                <p className="text-[9px] uppercase tracking-[0.35em] text-[#b8bda4]">Eljegyzés</p>
                 <h2 className="mt-4 font-serif text-5xl font-light italic md:text-7xl">A mi pillanataink</h2>
               </div>
-              <p className="max-w-sm text-xs leading-6 text-[#c5c7bb]">
-                Ezeket a hangulatképeket később könnyen lecserélhetitek saját közös fotókra.
+              <p className="text-[9px] uppercase tracking-[0.3em] text-[#b8bda4]">
+                Fotók: @blankartphotography
               </p>
             </div>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-              {[
-                [photos.memoryOne, "Közös utazás"],
-                ["/images/about.jpg", "Kedvenc portrénk"],
-                [photos.memoryTwo, "Egy nyári emlék"],
-                [photos.coupleThree, "Ketten"],
-              ].map(([src, label], index) => (
+              {gallery.map(({ src, alt }, index) => (
                 <figure
-                  key={label}
+                  key={src}
                   data-reveal
                   className={`image-reveal reveal relative overflow-hidden ${index % 2 ? "aspect-[3/4] md:mt-10" : "aspect-[3/4]"}`}
                 >
-                  <img
-                    src={src}
-                    alt={src.startsWith("/") ? `Lilla és Marton – ${label}` : `${label} placeholder fotó`}
-                    className="h-full w-full object-cover"
-                  />
-                  {!src.startsWith("/") && <figcaption className="photo-placeholder">Placeholder · {label}</figcaption>}
+                  <Image src={src} alt={alt} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover" />
                 </figure>
               ))}
             </div>
