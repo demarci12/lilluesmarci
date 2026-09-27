@@ -16,7 +16,10 @@ export default function Reveal() {
           }
         });
       },
-      { threshold: 0.15 },
+      // Threshold 0 + bottom inset instead of a ratio: `.image-reveal` figures start
+      // fully clip-pathed, which Chromium counts as zero visible area, so any
+      // ratio threshold > 0 would never fire for them.
+      { threshold: 0, rootMargin: "0px 0px -12% 0px" },
     );
     document.querySelectorAll(".ol .reveal, .ol [data-reveal]").forEach((el) => io.observe(el));
 
