@@ -265,6 +265,10 @@ html {
     font-size: clamp(4.5rem, 21vw, 8rem);
   }
 
+  .ol p.text-sm {
+    font-size: 1rem;
+  }
+
   .ol .botanical-float {
     opacity: 0.15;
   }
