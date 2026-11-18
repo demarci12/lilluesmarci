@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Envelope from "@/components/wedding/Envelope";
 import OliveBranch from "@/components/wedding/OliveBranch";
 import Quiz from "@/components/wedding/Quiz";
 import Reveal from "@/components/wedding/Reveal";
@@ -27,13 +28,32 @@ const gallery = [
   { src: "/images/engagement-carry.jpg", alt: "Marton a vállán viszi Lillát" },
 ];
 
+// Photo ribbon under the hero: colour and black-and-white shots alternate.
+const ribbon = [
+  { src: "/images/engagement-lift.jpg", alt: "Marton felemeli Lillát a naplementében", mono: false },
+  { src: "/images/engagement-ring.jpg", alt: "Lilla a gyűrűjét mutatja", mono: true },
+  { src: "/images/engagement-grass.jpg", alt: "Lilla és Marton a fűben", mono: false },
+  { src: "/images/engagement-carry.jpg", alt: "Marton a vállán viszi Lillát", mono: true },
+  { src: "/images/engagement-chapel.jpg", alt: "Lilla és Marton a kápolna mellett", mono: false },
+  { src: "/images/about.jpg", alt: "Lilla és Marton meghitt pillanata", mono: true },
+];
+
 export default function Home() {
   return (
     <div className="ol">
       <Reveal />
       <main className="overflow-hidden bg-[#f3efe5] text-[#292c26]">
-        <section className="wed-hero relative min-h-[100svh] px-6 md:px-12 lg:px-20">
-          <nav className="intro intro-1 relative z-20 flex items-center justify-between border-b border-[#73785f]/30 py-6 text-[10px] tracking-[0.28em] md:py-8">
+        <section className="wed-hero wed-hero-photo relative isolate min-h-[100svh] overflow-hidden px-6 text-[#fbf8f1] md:px-12 lg:px-20">
+          <Image
+            src="/images/venue.jpeg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="hero-photo absolute inset-0 -z-20 object-cover object-[50%_60%]"
+          />
+          <div className="hero-veil absolute inset-0 -z-10" />
+          <nav className="intro intro-1 relative z-20 flex items-center justify-between border-b border-white/30 py-6 text-[10px] tracking-[0.28em] md:py-8">
             <a href="#" className="font-medium">LILLA &amp; MARTON</a>
             <div className="hidden items-center gap-10 md:flex">
               <a className="nav-link" href="#program">PROGRAM</a>
@@ -45,43 +65,29 @@ export default function Home() {
             <span className="hidden md:inline">10 · 07 · 27</span>
             <a
               href="#rsvp"
-              className="-my-4 -mr-2 py-4 pl-4 pr-2 underline decoration-[#73785f]/60 underline-offset-4 md:hidden"
+              className="-my-4 -mr-2 py-4 pl-4 pr-2 underline decoration-white/60 underline-offset-4 md:hidden"
             >
               RSVP
             </a>
           </nav>
 
-          <div className="relative mx-auto min-h-[calc(100svh-87px)] max-w-[1500px]">
-            <p className="intro intro-2 absolute left-0 top-[10%] text-[10px] uppercase leading-5 tracking-[0.34em] text-[#666b55] md:left-[6%]">
-              Családjainkkal együtt
-              <br />
-              szeretettel meghívunk
+          <div className="relative mx-auto flex min-h-[calc(100svh-87px)] max-w-[1500px] flex-col items-center justify-center pb-24 text-center">
+            <p className="intro intro-2 text-[11px] uppercase tracking-[0.42em] text-white/90">
+              Családjainkkal együtt szeretettel meghívunk
             </p>
-
-            <div className="absolute left-1/2 top-[46%] z-10 w-full -translate-x-1/2 -translate-y-1/2">
-              <p className="intro intro-2 mb-5 text-center text-xs tracking-[0.45em] text-[#72765f]">
-                L &amp; M
-              </p>
-              <h1 className="hero-title intro intro-3 mx-auto max-w-[1200px] text-center font-serif text-[17vw] font-light uppercase leading-[0.71] tracking-[-0.065em] md:text-[11vw]">
-                <span className="block pr-[10vw] italic">Lilu</span>
-                <span className="block pl-[8vw]">&amp; Marci</span>
-              </h1>
-            </div>
-
-            <OliveBranch className="olive-drawing absolute -right-16 top-[12%] w-[250px] rotate-[-20deg] text-[#737b58] md:right-[3%] md:w-[370px]" />
-            <OliveBranch className="olive-drawing olive-drawing-delayed absolute -left-24 bottom-[4%] w-[260px] rotate-[148deg] text-[#737b58] opacity-60 md:left-[9%] md:w-[330px]" />
-
-            <div className="intro intro-4 absolute bottom-[20%] right-0 text-right md:bottom-[9%] md:right-[8%]">
-              <p className="font-serif text-3xl italic md:text-5xl">2027. július 10.</p>
-              <p className="mt-2 text-[10px] uppercase tracking-[0.35em] text-[#686d58]">Etyek · Kálna Mátyás Malom</p>
-            </div>
+            <h1 className="hero-script intro intro-3 mt-6 md:mt-8">
+              Lilu <span className="hero-amp">&amp;</span> Marci
+            </h1>
+            <p className="intro intro-4 mt-8 text-[11px] uppercase tracking-[0.42em] text-white/90 md:mt-10">
+              2027. július 10. · Etyek · Kálna Mátyás Malom
+            </p>
 
             <a
               href="#program"
-              className="intro intro-5 absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 text-[8px] tracking-[0.32em]"
+              className="intro intro-5 absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 text-[9px] tracking-[0.32em] text-white/90"
             >
               GÖRGESS TOVÁBB
-              <span className="scroll-line h-10 w-px bg-[#686d58]" />
+              <span className="scroll-line h-10 w-px bg-white/70" />
             </a>
           </div>
         </section>
@@ -99,6 +105,19 @@ export default function Home() {
             </a>
           ))}
         </div>
+
+        <section className="photo-marquee relative isolate overflow-hidden bg-[#2f342a]" aria-label="Eljegyzési fotók">
+          <div className="marquee-track">
+            {[...ribbon, ...ribbon].map((p, i) => (
+              <figure key={i} className={`marquee-item ${p.mono ? "is-mono" : ""}`} aria-hidden={i >= ribbon.length}>
+                <Image src={p.src} alt={i < ribbon.length ? p.alt : ""} fill sizes="(max-width: 768px) 70vw, 30vw" className="object-cover" />
+              </figure>
+            ))}
+          </div>
+          <p className="marquee-monogram pointer-events-none" aria-hidden="true">
+            L<span>&amp;</span>M
+          </p>
+        </section>
 
         <section id="program" className="relative bg-[#e4dfd1] px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto max-w-[1400px]">
@@ -447,13 +466,13 @@ export default function Home() {
         </section>
 
         <section id="rsvp" className="relative isolate overflow-hidden px-6 py-20 text-[#f4f0e7] md:px-12 md:py-28 lg:px-20">
-          <Image src="/images/venue.jpeg" alt="" fill sizes="100vw" className="absolute inset-0 -z-20 h-full w-full object-cover" />
-          <div className="absolute inset-0 -z-10 bg-[#20251c]/80" />
+          <Image src="/images/backdrop-champagne.jpg" alt="" fill sizes="100vw" className="absolute inset-0 -z-20 h-full w-full object-cover" />
+          <div className="absolute inset-0 -z-10 bg-[#2f342a]/85" />
           <div className="mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-12">
             <header data-reveal className="reveal lg:col-span-5">
               <p className="text-[10px] uppercase tracking-[0.4em] text-[#d0d3c3]">IX — Visszajelzés</p>
-              <h2 className="mt-8 font-serif text-7xl font-light leading-[0.85] italic md:text-9xl">Ott leszel?</h2>
-              <p className="mt-8 max-w-md text-sm leading-7 text-[#d9dbd1]">
+              <Envelope />
+              <p className="mt-10 max-w-md text-sm leading-7 text-[#d9dbd1]">
                 Kérjük, töltsétek ki az űrlapot, hogy tudjuk, számíthatunk-e rátok, illetve kértek-e szállást vagy transzfert.
               </p>
             </header>

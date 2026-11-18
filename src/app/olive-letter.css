@@ -322,3 +322,141 @@ html {
     transform: none;
   }
 }
+
+/* ---------- Calligraphy, full-screen hero, photo ribbon, RSVP envelope ---------- */
+
+.ol .font-script,
+.ol h2.font-serif,
+.ol .hero-script,
+.ol .marquee-monogram,
+.ol .env-title,
+.ol .env-seal {
+  font-family: var(--font-script-raw), "Pinyon Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Section titles: calligraphy instead of the light uppercase serif. The italic
+   accent spans inside them stay upright in the script face. */
+.ol h2.font-serif {
+  font-size: clamp(3.2rem, 8vw, 7rem);
+  line-height: 1.08;
+}
+.ol h2.font-serif .italic { font-style: normal; }
+
+/* Full-screen photo hero */
+.ol .hero-veil {
+  background:
+    linear-gradient(180deg, rgb(24 28 20 / 55%) 0%, rgb(24 28 20 / 25%) 38%, rgb(24 28 20 / 35%) 70%, rgb(24 28 20 / 70%) 100%);
+}
+.ol .hero-photo { animation: ol-hero-zoom 14s ease-out both; }
+.ol .hero-script {
+  font-size: clamp(3.6rem, 17vw, 13rem);
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 2px 24px rgb(0 0 0 / 25%);
+}
+.ol .hero-amp { font-size: 0.55em; vertical-align: 0.25em; margin: 0 0.08em; }
+.ol .wed-hero-photo .nav-link::after { background: #fbf8f1; }
+
+/* Photo ribbon with monogram */
+.ol .photo-marquee { height: clamp(300px, 62vh, 620px); }
+.ol .marquee-track {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  gap: 6px;
+  animation: ol-marquee 60s linear infinite;
+}
+.ol .photo-marquee:hover .marquee-track { animation-play-state: paused; }
+.ol .marquee-item { position: relative; flex: none; height: 100%; aspect-ratio: 3 / 4; overflow: hidden; margin: 0; }
+.ol .marquee-item.is-mono img { filter: grayscale(1) contrast(1.05); }
+.ol .marquee-monogram {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.12em;
+  color: #fbf8f1;
+  font-size: clamp(5rem, 14vw, 11rem);
+  line-height: 1;
+  text-shadow: 0 2px 30px rgb(0 0 0 / 35%);
+}
+.ol .marquee-monogram span { font-size: 0.6em; margin: 0 0.06em; }
+
+/* RSVP envelope */
+/* The open flap rises ~0.39 × width above the envelope (58% of a 3:2 height), so the
+   top margin scales with the width (margin % resolves against the container width). */
+.ol .envelope { position: relative; width: min(100%, 440px); aspect-ratio: 3 / 2; margin-top: calc(min(100%, 440px) * 0.39 + 2.5rem); perspective: 1400px; }
+.ol .env-back { position: absolute; inset: 0; border-radius: 6px; background: #e6dfcd; }
+.ol .env-letter {
+  position: absolute;
+  z-index: 1;
+  inset: 7% 6% 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 9%;
+  border-radius: 4px;
+  background: #fbf8f1;
+  color: #2f342a;
+  box-shadow: 0 10px 30px -18px rgb(0 0 0 / 60%);
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.7s;
+}
+.ol .env-kicker { font-size: 9px; letter-spacing: 0.34em; text-transform: uppercase; color: #5d6152; }
+.ol .env-title { margin-top: 0.35rem; font-size: clamp(2.6rem, 6vw, 3.6rem); line-height: 1.1; color: #4f5a33; }
+.ol .env-pocket { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; }
+.ol .env-pocket path { fill: #f1ebdc; }
+.ol .env-pocket .env-crease { fill: none; stroke: rgb(47 52 42 / 14%); stroke-width: 1; }
+.ol .env-flap {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 58%;
+  transform-origin: top;
+  transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.15s, z-index 0s 0.6s;
+}
+.ol .env-flap path { fill: #e9e2d0; stroke: rgb(47 52 42 / 10%); }
+.ol .env-seal {
+  position: absolute;
+  z-index: 4;
+  top: 58%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  translate: -50% -50%;
+  background: radial-gradient(circle at 35% 30%, #7d8a55, #4f5a33 70%);
+  box-shadow: inset 0 0 0 4px rgb(0 0 0 / 10%), 0 4px 10px rgb(0 0 0 / 30%);
+  color: #f1ebdc;
+  font-size: 22px;
+  line-height: 1;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.ol .env-seal span { font-size: 0.7em; }
+.ol .reveal.is-visible .env-flap { transform: rotateX(180deg); z-index: 0; }
+.ol .reveal.is-visible .env-seal { opacity: 0; transform: scale(0.9); }
+.ol .reveal.is-visible .env-letter { transform: translateY(-42%); }
+
+@keyframes ol-marquee { to { transform: translateX(-50%); } }
+@keyframes ol-hero-zoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+
+@media (max-width: 767px) {
+  .ol .marquee-track { animation-duration: 40s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ol .hero-photo, .ol .marquee-track { animation: none; }
+  .ol .photo-marquee { overflow-x: auto; }
+  .ol .env-flap { transform: rotateX(180deg); z-index: 0; transition: none; }
+  .ol .env-seal { opacity: 0; transition: none; }
+  .ol .env-letter { transform: translateY(-42%); transition: none; }
+}
