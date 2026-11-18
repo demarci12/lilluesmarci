@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Envelope from "@/components/wedding/Envelope";
-import OliveBranch from "@/components/wedding/OliveBranch";
 import Reveal from "@/components/wedding/Reveal";
 import RsvpForm from "@/components/wedding/RsvpForm";
 
@@ -33,18 +32,18 @@ const gallery = [
 // Photo ribbon under the hero: colour and black-and-white shots alternate.
 const ribbon = [
   { src: "/images/engagement-lift.jpg", alt: "Marton felemeli Lillát a naplementében", mono: false },
-  { src: "/images/engagement-ring.jpg", alt: "Lilla a gyűrűjét mutatja", mono: true },
+  { src: "/images/engagement-ring.jpg", alt: "Lilla a gyűrűjét mutatja", mono: false },
   { src: "/images/engagement-grass.jpg", alt: "Lilla és Marton a fűben", mono: false },
-  { src: "/images/engagement-carry.jpg", alt: "Marton a vállán viszi Lillát", mono: true },
+  { src: "/images/engagement-carry.jpg", alt: "Marton a vállán viszi Lillát", mono: false },
   { src: "/images/engagement-chapel.jpg", alt: "Lilla és Marton a kápolna mellett", mono: false },
-  { src: "/images/about.jpg", alt: "Lilla és Marton meghitt pillanata", mono: true },
+  { src: "/images/about.jpg", alt: "Lilla és Marton meghitt pillanata", mono: false },
 ];
 
 export default function Home() {
   return (
     <div className="ol">
       <Reveal />
-      <main className="overflow-hidden bg-[#f3efe5] text-[#292c26]">
+      <main className="overflow-hidden bg-[#fbf7ee] text-[#292c26]">
         <section className="wed-hero wed-hero-photo relative isolate min-h-[100svh] overflow-hidden px-6 text-[#fbf8f1] md:px-12 lg:px-20">
           <Image
             src="/images/venue.jpeg"
@@ -108,7 +107,7 @@ export default function Home() {
           ))}
         </div>
 
-        <section className="photo-marquee relative isolate overflow-hidden bg-[#2f342a]" aria-label="Eljegyzési fotók">
+        <section className="photo-marquee relative isolate overflow-hidden bg-[#fbf7ee]" aria-label="Eljegyzési fotók">
           <div className="marquee-track">
             {[...ribbon, ...ribbon].map((p, i) => (
               <figure key={i} className={`marquee-item ${p.mono ? "is-mono" : ""}`} aria-hidden={i >= ribbon.length}>
@@ -121,64 +120,34 @@ export default function Home() {
           </p>
         </section>
 
-        <section id="program" className="relative bg-[#e4dfd1] px-6 py-20 md:px-12 md:py-28 lg:px-20">
+        <section id="program" className="relative bg-[#f8f1da] px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto max-w-[1400px]">
-            <header data-reveal className="reveal grid gap-8 border-b border-[#73785f]/40 pb-16 md:grid-cols-12">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56] md:col-span-3">I — A nagy nap</p>
-              <h2 className="font-serif text-[18vw] font-light uppercase leading-[0.7] tracking-[-0.055em] md:col-span-7 md:text-[10vw]">
+            <header data-reveal className="reveal text-center">
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">A nagy nap</p>
+              <h2 className="mt-4 font-serif">
                 A nap <span className="italic">menete</span>
               </h2>
-              <p className="max-w-xs self-end text-sm leading-7 text-[#56594c] md:col-span-2">
-                Egy nap, amit a számunkra legfontosabb emberekkel szeretnénk megélni.
-              </p>
             </header>
 
-            <div className="relative mt-16 md:mt-24">
-              <div className="timeline-line absolute bottom-0 left-[27px] top-0 w-px bg-[#8c9079]/40 md:left-1/2" />
-              {timeline.map((item, index) => (
-                <article
-                  key={item.time}
-                  data-reveal
-                  className={`reveal timeline-row relative mb-14 grid grid-cols-[56px_1fr] gap-5 md:mb-20 md:grid-cols-2 md:gap-16 ${
-                    index % 2 ? "md:text-left" : "md:text-right"
-                  }`}
-                >
-                  <span className="timeline-dot absolute left-[23px] top-5 h-[9px] w-[9px] rounded-full border border-[#596044] bg-[#e4dfd1] md:left-1/2 md:-translate-x-1/2" />
-                  <div className={`${index % 2 ? "md:col-start-2" : "md:col-start-1"} col-start-2`}>
-                    <p className="font-serif text-6xl font-light leading-none text-[#666c50] md:text-8xl">{item.time}</p>
-                    <h3 className="mt-5 font-serif text-3xl italic md:text-4xl">{item.text}</h3>
-                    <p className={`mt-4 max-w-xs text-sm leading-7 text-[#606255] ${index % 2 ? "" : "md:ml-auto"}`}>
-                      {item.detail}
-                    </p>
-                  </div>
-                </article>
+            {/* Compact: time + what happens, one row on desktop, two columns on phones. */}
+            <ol data-reveal className="reveal mt-12 grid grid-cols-2 gap-px overflow-hidden border border-[#73785f]/25 bg-[#73785f]/25 sm:grid-cols-4 lg:grid-cols-7">
+              {timeline.map((item) => (
+                <li key={item.time} className="bg-[#f8f1da] px-4 py-7 text-center last:col-span-2 lg:last:col-span-1">
+                  <p className="font-serif text-4xl font-light leading-none text-[#6f7a3a] md:text-5xl">{item.time}</p>
+                  <h3 className="mt-3 font-serif text-xl leading-tight md:text-2xl">{item.text}</h3>
+                </li>
               ))}
-
-              <figure data-reveal className="reveal image-reveal relative z-10 ml-auto mt-[-4rem] w-[82%] md:mt-[-11rem] md:w-[43%]">
-                <div className="relative aspect-[4/5] overflow-hidden bg-[#c8c2b3]">
-                  <div className="parallax-image absolute inset-x-0 top-0 h-[125%]">
-                    <Image
-                      src="/images/about.jpg"
-                      alt="Lilla és Marton meghitt pillanata"
-                      fill
-                      sizes="(max-width: 768px) 82vw, 43vw"
-                      className="object-cover grayscale-[18%] sepia-[12%]"
-                    />
-                  </div>
-                </div>
-                <figcaption className="mt-4 flex justify-between text-[9px] uppercase tracking-[0.25em] text-[#6e715e]">
-                  <span>Egy nap, amit sosem felejtünk el</span><span>01 / 03</span>
-                </figcaption>
-              </figure>
-            </div>
+            </ol>
+            <p data-reveal className="reveal mx-auto mt-8 max-w-xl text-center text-sm text-[#56594c]">
+              Kérjük, 14:50-re érkezzetek a templomhoz. Transzfer 16:10-kor indul a malomhoz.
+            </p>
           </div>
-          <OliveBranch className="botanical-float absolute -right-28 top-[38%] w-[340px] rotate-[-72deg] text-[#83886b] opacity-30 md:w-[500px]" />
         </section>
 
-        <section id="details" className="relative bg-[#f3efe5] px-6 py-20 md:px-12 md:py-28 lg:px-20">
+        <section id="details" className="relative bg-[#fbf7ee] px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto max-w-[1400px]">
             <div data-reveal className="reveal grid gap-10 md:grid-cols-12">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56] md:col-span-3">II — Mentsd el a dátumot</p>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56] md:col-span-3">Mentsd el a dátumot</p>
               <h2 className="font-serif text-6xl font-light leading-[0.85] tracking-[-0.04em] md:col-span-9 md:text-9xl">
                 Egy nyári nap<br /><span className="italic">Etyeken.</span>
               </h2>
@@ -220,10 +189,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="megkozelites" className="bg-[#e4dfd1] px-6 py-20 md:px-12 md:py-28 lg:px-20">
+        <section id="megkozelites" className="bg-[#eef1e2] px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto max-w-[1400px]">
             <header data-reveal className="reveal grid gap-10 md:grid-cols-12">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56] md:col-span-3">III — Megközelítés</p>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56] md:col-span-3">Megközelítés</p>
               <h2 className="font-serif text-7xl font-light leading-[0.82] tracking-[-0.045em] md:col-span-9 md:text-9xl">
                 Hogyan juttok<br /><span className="italic">el hozzánk?</span>
               </h2>
@@ -259,7 +228,7 @@ export default function Home() {
               </article>
             </div>
 
-            <div data-reveal className="reveal mt-14 flex flex-col justify-between gap-8 bg-[#d8d1c1] p-8 md:flex-row md:items-center md:p-12">
+            <div data-reveal className="reveal mt-14 flex flex-col justify-between gap-8 bg-[#dfe5cc] p-8 md:flex-row md:items-center md:p-12">
               <div>
                 <p className="text-[9px] uppercase tracking-[0.3em] text-[#6d725b]">Nem szeretnétek vezetni?</p>
                 <p className="mt-3 font-serif text-3xl italic">A transzferről mi gondoskodunk.</p>
@@ -272,10 +241,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="szallas" className="bg-[#d8d1c1] px-6 py-20 md:px-12 md:py-28 lg:px-20">
+        <section id="szallas" className="bg-[#f6eedb] px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto grid max-w-[1400px] items-start gap-16 md:grid-cols-12">
             <div data-reveal className="reveal md:col-span-5">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">IV — Pihenés</p>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">Pihenés</p>
               <h2 className="mt-10 font-serif text-7xl font-light leading-[0.82] tracking-[-0.045em] md:text-9xl">
                 Szállás<br /><span className="italic">a közelben.</span>
               </h2>
@@ -309,10 +278,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-[#f3efe5] px-6 py-20 md:px-12 md:py-28 lg:px-20">
+        <section className="bg-[#fbf7ee] px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto max-w-[1400px]">
             <header data-reveal className="reveal mx-auto max-w-4xl text-center">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">V — Akik mellettünk állnak</p>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">Akik mellettünk állnak</p>
               <h2 className="mt-10 font-serif text-7xl font-light leading-[0.85] tracking-[-0.045em] md:text-9xl">
                 A mi <span className="italic">csapatunk</span>
               </h2>
@@ -324,7 +293,7 @@ export default function Home() {
             <div className="mt-14 grid border-y border-[#73785f]/40 md:grid-cols-2">
               <article data-reveal className="reveal px-4 py-14 text-center md:border-r md:px-12 md:py-20">
                 <figure className="relative mx-auto mb-10 aspect-[4/3] max-w-lg overflow-hidden">
-                  <img src={photos.bridesmaids} alt="A koszorúslányok fotójának helye" className="h-full w-full object-cover grayscale-[15%]" />
+                  <img src={photos.bridesmaids} alt="A koszorúslányok fotójának helye" className="h-full w-full object-cover" />
                   <figcaption className="photo-placeholder">Placeholder · koszorúslányok fotója</figcaption>
                 </figure>
                 <span className="font-serif text-7xl font-light text-[#858a70]">L</span>
@@ -336,7 +305,7 @@ export default function Home() {
               </article>
               <article data-reveal className="reveal px-4 py-14 text-center md:px-12 md:py-20">
                 <figure className="relative mx-auto mb-10 aspect-[4/3] max-w-lg overflow-hidden">
-                  <img src={photos.groomsmen} alt="A vőlegény kísérőinek fotóhelye" className="h-full w-full object-cover grayscale-[15%]" />
+                  <img src={photos.groomsmen} alt="A vőlegény kísérőinek fotóhelye" className="h-full w-full object-cover" />
                   <figcaption className="photo-placeholder">Placeholder · best manek fotója</figcaption>
                 </figure>
                 <span className="font-serif text-7xl font-light text-[#858a70]">M</span>
@@ -350,14 +319,14 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-[#2f342a] px-4 py-16 text-[#f2eee4] md:px-8 md:py-20">
+        <section className="bg-[#eef1e2] px-4 py-16 text-[#292c26] md:px-8 md:py-20">
           <div className="mx-auto max-w-[1500px]">
             <div data-reveal className="reveal mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
               <div>
-                <p className="text-[9px] uppercase tracking-[0.35em] text-[#b8bda4]">Eljegyzés</p>
+                <p className="text-[9px] uppercase tracking-[0.35em] text-[#5f6650]">Eljegyzés</p>
                 <h2 className="mt-4 font-serif text-5xl font-light italic md:text-7xl">A mi pillanataink</h2>
               </div>
-              <p className="text-[9px] uppercase tracking-[0.3em] text-[#b8bda4]">
+              <p className="text-[9px] uppercase tracking-[0.3em] text-[#5f6650]">
                 Fotók: @blankartphotography
               </p>
             </div>
@@ -375,10 +344,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="gyik" className="bg-[#e4dfd1] px-6 py-20 md:px-12 md:py-28 lg:px-20">
+        <section id="gyik" className="bg-[#f8f1da] px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto grid max-w-[1400px] gap-16 md:grid-cols-12">
             <header data-reveal className="reveal md:col-span-5">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">VI — Hasznos tudnivalók</p>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">Hasznos tudnivalók</p>
               <h2 className="mt-10 font-serif text-7xl font-light leading-[0.82] tracking-[-0.045em] md:text-9xl">
                 Gyakori<br /><span className="italic">kérdések</span>
               </h2>
@@ -406,10 +375,10 @@ export default function Home() {
 
         <section id="rsvp" className="relative isolate overflow-hidden px-6 py-20 text-[#f4f0e7] md:px-12 md:py-28 lg:px-20">
           <Image src="/images/backdrop-champagne.jpg" alt="" fill sizes="100vw" className="absolute inset-0 -z-20 h-full w-full object-cover" />
-          <div className="absolute inset-0 -z-10 bg-[#2f342a]/85" />
+          <div className="absolute inset-0 -z-10 bg-[#4f5a33]/75" />
           <div className="mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-12">
             <header data-reveal className="reveal lg:col-span-5">
-              <p className="text-[10px] uppercase tracking-[0.4em] text-[#d0d3c3]">VII — Visszajelzés</p>
+              <p className="text-[10px] uppercase tracking-[0.4em] text-[#d0d3c3]">Visszajelzés</p>
               <Envelope />
               <p className="mt-10 max-w-md text-sm leading-7 text-[#d9dbd1]">
                 Kérjük, töltsétek ki az űrlapot, hogy tudjuk, számíthatunk-e rátok, illetve kértek-e szállást vagy transzfert.
@@ -421,7 +390,7 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="flex flex-col items-center justify-between gap-8 bg-[#272c23] px-8 py-10 text-[9px] uppercase tracking-[0.3em] text-[#bfc2b5] md:flex-row">
+        <footer className="flex flex-col items-center justify-between gap-8 bg-[#4f5a33] px-8 py-10 text-[9px] uppercase tracking-[0.3em] text-[#eef1e2] md:flex-row">
           <span>Lilla &amp; Marton</span>
           <span className="font-serif text-xl normal-case tracking-normal italic">Szeretettel, Etyekről</span>
           <span>10 · 07 · 2027</span>

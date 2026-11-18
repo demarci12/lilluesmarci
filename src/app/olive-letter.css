@@ -460,3 +460,24 @@ html {
   .ol .env-seal { opacity: 0; transition: none; }
   .ol .env-letter { transform: translateY(-42%); transition: none; }
 }
+
+/* ---------- Happier pass: brighter hero, two-tone script titles ---------- */
+.ol .hero-veil {
+  background:
+    linear-gradient(180deg, rgb(24 28 20 / 38%) 0%, rgb(24 28 20 / 8%) 40%, rgb(24 28 20 / 14%) 70%, rgb(24 28 20 / 45%) 100%),
+    linear-gradient(180deg, rgb(246 220 150 / 0%) 40%, rgb(246 220 150 / 22%) 100%);
+}
+.ol .hero-photo { filter: brightness(1.12) saturate(1.12); }
+.ol .hero-amp { color: #f6e7a8; }
+.ol .marquee-monogram span { color: #f6e7a8; }
+/* the accent word in each calligraphic title turns sage-olive */
+.ol h2.font-serif .italic { color: #6f7a3a; }
+.ol section.bg-\[\#4f5a33\] h2.font-serif .italic,
+.ol #rsvp h2 .italic { color: #e3e9c9; }
+
+/* ---------- Cleaner pass: readable sizes everywhere ---------- */
+/* Body copy was 14px (text-sm) and labels 9-10px; the message got lost. */
+.ol p.text-sm, .ol .text-sm { font-size: 17px; line-height: 1.7; }
+.ol .text-xs { font-size: 15px; line-height: 1.6; }
+.ol [class*="text-[9px]"], .ol [class*="text-[10px]"] { font-size: 12px; }
+.ol .rsvp-field > span { font-size: 0.75rem; }
