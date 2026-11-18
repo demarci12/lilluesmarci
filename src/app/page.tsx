@@ -5,22 +5,14 @@ import RsvpForm from "@/components/wedding/RsvpForm";
 
 // Main guest-facing points only (the couple's own prep, buffers and photo slots stay off).
 const timeline = [
-  { time: "15:00", text: "Templomi szertartás", detail: "Az etyeki templomban. Kérjük, 14:50-re érkezzetek." },
-  { time: "16:10", text: "Transzfer a malomhoz", detail: "Közös transzfer a templomtól a Kálna Mátyás Malomhoz." },
-  { time: "16:40", text: "Vendégváró", detail: "Megérkezés után koccintunk." },
-  { time: "19:30", text: "Vacsora", detail: "Közösen elfogyasztjuk az ünnepi vacsorát." },
-  { time: "22:15", text: "Első tánc", detail: "Utána felkapcsoljuk a fényfüzéreket." },
-  { time: "22:30", text: "Buli", detail: "Együtt ünneplünk hajnalig." },
-  { time: "0:00", text: "Torta", detail: "Éjfélkor jön a torta." },
+  { time: "15:00", text: "Szertartás", place: "Etyeki templom" },
+  { time: "16:10", text: "Transzfer", place: "A templomtól a malomhoz" },
+  { time: "16:40", text: "Vendégváró", place: "Kálna Mátyás Malom" },
+  { time: "19:30", text: "Vacsora", place: "Kálna Mátyás Malom" },
+  { time: "22:15", text: "Első tánc", place: "Kálna Mátyás Malom" },
+  { time: "22:30", text: "Buli", place: "Hajnalig" },
+  { time: "0:00", text: "Torta", place: "Éjfélkor" },
 ];
-
-// Wedding-party slots are still Figma-export placeholders until real shots exist.
-const photos = {
-  bridesmaids:
-    "https://images.unsplash.com/photo-1598167563284-f00d0055eaa6?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=1200",
-  groomsmen:
-    "https://images.unsplash.com/photo-1707190980959-c1821df3fa7e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=85&w=1200",
-};
 
 const gallery = [
   { src: "/images/engagement-ring.jpg", alt: "Lilla a gyűrűjét mutatja" },
@@ -29,13 +21,13 @@ const gallery = [
   { src: "/images/engagement-carry.jpg", alt: "Marton a vállán viszi Lillát" },
 ];
 
-// Photo ribbon under the hero: colour and black-and-white shots alternate.
+// Opening slideshow: black-and-white and colour shots alternate.
 const ribbon = [
-  { src: "/images/engagement-lift.jpg", alt: "Marton felemeli Lillát a naplementében", mono: false },
+  { src: "/images/engagement-lift.jpg", alt: "Marton felemeli Lillát a naplementében", mono: true },
   { src: "/images/engagement-ring.jpg", alt: "Lilla a gyűrűjét mutatja", mono: false },
-  { src: "/images/engagement-grass.jpg", alt: "Lilla és Marton a fűben", mono: false },
+  { src: "/images/engagement-grass.jpg", alt: "Lilla és Marton a fűben", mono: true },
   { src: "/images/engagement-carry.jpg", alt: "Marton a vállán viszi Lillát", mono: false },
-  { src: "/images/engagement-chapel.jpg", alt: "Lilla és Marton a kápolna mellett", mono: false },
+  { src: "/images/engagement-chapel.jpg", alt: "Lilla és Marton a kápolna mellett", mono: true },
   { src: "/images/about.jpg", alt: "Lilla és Marton meghitt pillanata", mono: false },
 ];
 
@@ -44,83 +36,47 @@ export default function Home() {
     <div className="ol">
       <Reveal />
       <main className="overflow-hidden bg-[#fbf7ee] text-[#292c26]">
-        <section className="wed-hero wed-hero-photo relative isolate min-h-[100svh] overflow-hidden px-6 text-[#fbf8f1] md:px-12 lg:px-20">
-          <Image
-            src="/images/venue.jpeg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="hero-photo absolute inset-0 -z-20 object-cover object-[50%_60%]"
-          />
-          <div className="hero-veil absolute inset-0 -z-10" />
-          <nav className="intro intro-1 relative z-20 flex items-center justify-between border-b border-white/30 py-6 text-[10px] tracking-[0.28em] md:py-8">
-            <a href="#" className="font-medium">LILLA &amp; MARTON</a>
-            <div className="hidden items-center gap-10 md:flex">
-              <a className="nav-link" href="#program">PROGRAM</a>
-              <a className="nav-link" href="#megkozelites">ÚTVONAL</a>
-              <a className="nav-link" href="#szallas">SZÁLLÁS</a>
+        {/* Opening: white header with our names and the menu, then the slideshow with the monogram. */}
+        <section className="wed-hero bg-[#fbf7ee]">
+          <header className="intro intro-1 px-6 pb-6 pt-10 text-center md:pt-12">
+            <h1 className="font-serif text-[2rem] font-normal uppercase tracking-[0.14em] text-[#292c26] md:text-[2.6rem]">
+              Lilla &amp; Marton
+            </h1>
+            <p className="mt-2 text-[11px] uppercase tracking-[0.42em] text-[#5f6650]">2027. július 10. · Etyek</p>
+            <nav aria-label="Fő navigáció" className="mt-6 flex flex-wrap justify-center gap-x-7 gap-y-2 text-[15px] text-[#3d4230]">
+              <a className="nav-link is-current" href="#">Kezdőlap</a>
+              <a className="nav-link" href="#program">Program</a>
+              <a className="nav-link" href="#megkozelites">Útvonal</a>
+              <a className="nav-link" href="#szallas">Szállás</a>
               <a className="nav-link" href="#gyik">GYIK</a>
               <a className="nav-link" href="#rsvp">RSVP</a>
+            </nav>
+          </header>
+
+          <div className="hero-ribbon intro intro-2 relative" aria-label="Eljegyzési fotók">
+            <div className="marquee-track">
+              {[...ribbon, ...ribbon].map((p, i) => (
+                <figure key={i} className={`marquee-item ${p.mono ? "is-mono" : ""}`} aria-hidden={i >= ribbon.length}>
+                  <Image
+                    src={p.src}
+                    alt={i < ribbon.length ? p.alt : ""}
+                    fill
+                    priority={i < 4}
+                    sizes="(max-width: 768px) 80vw, 34vw"
+                    className="object-cover"
+                  />
+                </figure>
+              ))}
             </div>
-            <span className="hidden md:inline">10 · 07 · 27</span>
-            <a
-              href="#rsvp"
-              className="-my-4 -mr-2 py-4 pl-4 pr-2 underline decoration-white/60 underline-offset-4 md:hidden"
-            >
-              RSVP
-            </a>
-          </nav>
-
-          <div className="relative mx-auto flex min-h-[calc(100svh-87px)] max-w-[1500px] flex-col items-center justify-center pb-24 text-center">
-            <p className="intro intro-2 text-[11px] uppercase tracking-[0.42em] text-white/90">
-              Családjainkkal együtt szeretettel meghívunk
+            <p className="hero-monogram pointer-events-none" aria-hidden="true">
+              <span className="mono-l">L</span>
+              <span className="mono-amp">&amp;</span>
+              <span className="mono-m">M</span>
             </p>
-            <h1 className="hero-script intro intro-3 mt-6 md:mt-8">
-              Lilu <span className="hero-amp">&amp;</span> Marci
-            </h1>
-            <p className="intro intro-4 mt-8 text-[11px] uppercase tracking-[0.42em] text-white/90 md:mt-10">
-              2027. július 10. · Etyek · Kálna Mátyás Malom
-            </p>
-
-            <a
-              href="#program"
-              className="intro intro-5 absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 text-[9px] tracking-[0.32em] text-white/90"
-            >
-              GÖRGESS TOVÁBB
-              <span className="scroll-line h-10 w-px bg-white/70" />
-            </a>
           </div>
         </section>
 
-        <div className="flex border-y border-[#73785f]/35 bg-[#f3efe5] md:px-6">
-          {[
-            ["Program", "#program"],
-            ["Útvonal", "#megkozelites"],
-            ["Szállás", "#szallas"],
-            ["GYIK", "#gyik"],
-            ["RSVP", "#rsvp"],
-          ].map(([label, href]) => (
-            <a key={href} href={href} className="min-w-0 flex-1 border-r border-[#73785f]/35 px-1 py-5 text-center text-[9px] uppercase tracking-[0.14em] last:border-r-0 md:min-w-max md:px-7 md:tracking-[0.28em]">
-              {label}
-            </a>
-          ))}
-        </div>
-
-        <section className="photo-marquee relative isolate overflow-hidden bg-[#fbf7ee]" aria-label="Eljegyzési fotók">
-          <div className="marquee-track">
-            {[...ribbon, ...ribbon].map((p, i) => (
-              <figure key={i} className={`marquee-item ${p.mono ? "is-mono" : ""}`} aria-hidden={i >= ribbon.length}>
-                <Image src={p.src} alt={i < ribbon.length ? p.alt : ""} fill sizes="(max-width: 768px) 70vw, 30vw" className="object-cover" />
-              </figure>
-            ))}
-          </div>
-          <p className="marquee-monogram pointer-events-none" aria-hidden="true">
-            L<span>&amp;</span>M
-          </p>
-        </section>
-
-        <section id="program" className="relative bg-[#f8f1da] px-6 py-20 md:px-12 md:py-28 lg:px-20">
+        <section id="program" className="relative bg-[#fbf7ee] px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto max-w-[1400px]">
             <header data-reveal className="reveal text-center">
               <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">A nagy nap</p>
@@ -129,17 +85,18 @@ export default function Home() {
               </h2>
             </header>
 
-            {/* Compact: time + what happens, one row on desktop, two columns on phones. */}
-            <ol data-reveal className="reveal mt-12 grid grid-cols-2 gap-px overflow-hidden border border-[#73785f]/25 bg-[#73785f]/25 sm:grid-cols-4 lg:grid-cols-7">
+            {/* Itinerary: small-caps title, italic place and time, no boxes. */}
+            <ol data-reveal className="reveal mx-auto mt-14 flex max-w-[1100px] flex-wrap justify-center gap-x-6 gap-y-12">
               {timeline.map((item) => (
-                <li key={item.time} className="bg-[#f8f1da] px-4 py-7 text-center last:col-span-2 lg:last:col-span-1">
-                  <p className="font-serif text-4xl font-light leading-none text-[#6f7a3a] md:text-5xl">{item.time}</p>
-                  <h3 className="mt-3 font-serif text-xl leading-tight md:text-2xl">{item.text}</h3>
+                <li key={item.time} className="w-[44%] text-center sm:w-[30%] lg:w-[22%]">
+                  <h3 className="itin-title">{item.text}</h3>
+                  <p className="mt-3 font-serif text-xl italic text-[#56594c]">{item.place}</p>
+                  <p className="mt-1 font-serif text-xl italic text-[#6f7a3a]">{item.time}</p>
                 </li>
               ))}
             </ol>
-            <p data-reveal className="reveal mx-auto mt-8 max-w-xl text-center text-sm text-[#56594c]">
-              Kérjük, 14:50-re érkezzetek a templomhoz. Transzfer 16:10-kor indul a malomhoz.
+            <p data-reveal className="reveal mx-auto mt-14 max-w-xl text-center text-sm text-[#56594c]">
+              Kérjük, 14:50-re érkezzetek a templomhoz.
             </p>
           </div>
         </section>
@@ -167,7 +124,7 @@ export default function Home() {
               ))}
             </div>
             <div className="mt-16 grid items-end gap-6 md:grid-cols-12">
-              <figure data-reveal className="image-reveal reveal relative aspect-[4/5] overflow-hidden md:col-span-5">
+              <figure data-reveal className="reveal oval-photo relative mx-auto aspect-[3/4] w-[78%] overflow-hidden md:col-span-5 md:w-full">
                 <Image
                   src="/images/engagement-lift.jpg"
                   alt="Marton felemeli Lillát a naplementében"
@@ -176,14 +133,17 @@ export default function Home() {
                   className="object-cover"
                 />
               </figure>
-              <figure data-reveal className="image-reveal reveal relative aspect-[5/4] overflow-hidden md:col-span-6 md:col-start-7 md:mb-16">
-                <Image
-                  src="/images/engagement-chapel.jpg"
-                  alt="Lilla és Marton a fűben ülnek, mögöttük egy kápolna"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 45vw"
-                  className="object-cover object-[50%_45%]"
-                />
+              <figure data-reveal className="reveal polaroid mx-auto w-[72%] md:col-span-4 md:col-start-8 md:mb-10 md:w-full">
+                <div className="relative aspect-square overflow-hidden">
+                  <Image
+                    src="/images/engagement-chapel.jpg"
+                    alt="Lilla és Marton a fűben ülnek, mögöttük egy kápolna"
+                    fill
+                    sizes="(max-width: 768px) 70vw, 30vw"
+                    className="object-cover object-[50%_45%] grayscale"
+                  />
+                </div>
+                <figcaption className="polaroid-note">Lilla &amp; Marton</figcaption>
               </figure>
             </div>
           </div>
@@ -216,6 +176,9 @@ export default function Home() {
                   A nap a templomi szertartással kezdődik. A templom pontos címét és a parkolási
                   információkat a meghívóval együtt küldjük el.
                 </p>
+                <figure className="relative mt-8 aspect-[4/3] overflow-hidden">
+                  <Image src="/images/church-photo.jpg" alt="Az etyeki templom a kőfal és a lépcső fölött" fill sizes="(max-width: 768px) 90vw, 30vw" className="object-cover" />
+                </figure>
               </article>
               <article data-reveal className="reveal py-12 md:px-10">
                 <span className="font-serif text-5xl font-light text-[#7b8066]">03</span>
@@ -225,6 +188,9 @@ export default function Home() {
                   A szertartás után közös transzfer visz benneteket a malomhoz. Saját autóval is
                   érkezhettek; a helyszínen parkolási lehetőség lesz.
                 </p>
+                <figure className="relative mt-8 aspect-[4/3] overflow-hidden">
+                  <Image src="/images/venue.jpeg" alt="A Kálna Mátyás Malom a tóparton, fényfüzérekkel" fill sizes="(max-width: 768px) 90vw, 30vw" className="object-cover" />
+                </figure>
               </article>
             </div>
 
@@ -241,81 +207,18 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="szallas" className="bg-[#f6eedb] px-6 py-20 md:px-12 md:py-28 lg:px-20">
-          <div className="mx-auto grid max-w-[1400px] items-start gap-16 md:grid-cols-12">
-            <div data-reveal className="reveal md:col-span-5">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">Pihenés</p>
-              <h2 className="mt-10 font-serif text-7xl font-light leading-[0.82] tracking-[-0.045em] md:text-9xl">
-                Szállás<br /><span className="italic">a közelben.</span>
-              </h2>
-            </div>
-            <div data-reveal className="reveal md:col-span-6 md:col-start-7">
-              <p className="max-w-xl font-serif text-3xl leading-tight italic md:text-4xl">
-                Szeretnénk, ha az este végén már csak a szép emlékekkel kellene hazatérnetek.
-              </p>
-              <p className="mt-10 max-w-lg text-sm leading-7 text-[#55594b]">
-                Etyeken több szálláshely közül is választhattok. A szobák korlátozott számban
-                érhetők el, ezért érdemes időben foglalni. A visszajelzésnél kérjük, jelezzétek,
-                ha segítséget kértek a megfelelő szállás megtalálásában.
-              </p>
-              <div className="mt-12 border-t border-[#73785f]/40 pt-8">
-                <div className="grid gap-8 sm:grid-cols-2">
-                  <div>
-                    <p className="text-[9px] uppercase tracking-[0.3em] text-[#6d725b]">Bejelentkezés</p>
-                    <p className="mt-3 font-serif text-2xl italic">Etyeken</p>
-                  </div>
-                  <div>
-                    <p className="text-[9px] uppercase tracking-[0.3em] text-[#6d725b]">Transzfer</p>
-                    <p className="mt-3 font-serif text-2xl italic">Oda és vissza</p>
-                  </div>
-                </div>
-                <p className="mt-8 text-xs leading-6 text-[#616556]">
-                  A templomtól a malomhoz, majd az este folyamán az etyeki szállásokhoz és
-                  Budapestre is biztosítunk transzfert. Az indulási időpontokat később tesszük közzé.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-[#fbf7ee] px-6 py-20 md:px-12 md:py-28 lg:px-20">
-          <div className="mx-auto max-w-[1400px]">
-            <header data-reveal className="reveal mx-auto max-w-4xl text-center">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">Akik mellettünk állnak</p>
-              <h2 className="mt-10 font-serif text-7xl font-light leading-[0.85] tracking-[-0.045em] md:text-9xl">
-                A mi <span className="italic">csapatunk</span>
-              </h2>
-              <p className="mx-auto mt-10 max-w-lg text-sm leading-7 text-[#5e6253]">
-                Ők azok, akik a kezdetektől ismerik a történetünket, és ezen a napon is közvetlenül mellettünk lesznek.
-              </p>
-            </header>
-
-            <div className="mt-14 grid border-y border-[#73785f]/40 md:grid-cols-2">
-              <article data-reveal className="reveal px-4 py-14 text-center md:border-r md:px-12 md:py-20">
-                <figure className="relative mx-auto mb-10 aspect-[4/3] max-w-lg overflow-hidden">
-                  <img src={photos.bridesmaids} alt="A koszorúslányok fotójának helye" className="h-full w-full object-cover" />
-                  <figcaption className="photo-placeholder">Placeholder · koszorúslányok fotója</figcaption>
-                </figure>
-                <span className="font-serif text-7xl font-light text-[#858a70]">L</span>
-                <p className="mt-8 text-[9px] uppercase tracking-[0.34em] text-[#70755e]">Lilla oldalán</p>
-                <h3 className="mt-4 font-serif text-5xl italic">Koszorúslányok</h3>
-                <p className="mx-auto mt-6 max-w-sm text-sm leading-7 text-[#626557]">
-                  A barátnők, akik minden örömben, könnyben és készülődésben vele vannak.
-                </p>
-              </article>
-              <article data-reveal className="reveal px-4 py-14 text-center md:px-12 md:py-20">
-                <figure className="relative mx-auto mb-10 aspect-[4/3] max-w-lg overflow-hidden">
-                  <img src={photos.groomsmen} alt="A vőlegény kísérőinek fotóhelye" className="h-full w-full object-cover" />
-                  <figcaption className="photo-placeholder">Placeholder · best manek fotója</figcaption>
-                </figure>
-                <span className="font-serif text-7xl font-light text-[#858a70]">M</span>
-                <p className="mt-8 text-[9px] uppercase tracking-[0.34em] text-[#70755e]">Marton oldalán</p>
-                <h3 className="mt-4 font-serif text-5xl italic">Vőlegény kísérői</h3>
-                <p className="mx-auto mt-6 max-w-sm text-sm leading-7 text-[#626557]">
-                  A barátok, akik mindig ott állnak mellette – most pedig az oltárhoz vezető úton is.
-                </p>
-              </article>
-            </div>
+        <section id="szallas" className="bg-[#5f6a3c] px-6 py-20 text-center text-[#fbf8f1] md:px-12 md:py-28">
+          <div data-reveal className="reveal mx-auto max-w-3xl">
+            <h2 className="details-title">Tudnivalók</h2>
+            <p className="mt-10 font-serif text-2xl italic leading-relaxed md:text-[1.7rem]">
+              Etyeken több szálláshely közül is választhattok. A szobák korlátozott számban érhetők el,
+              ezért érdemes időben foglalni. A visszajelzésnél kérjük, jelezzétek, ha segítséget kértek
+              a megfelelő szállás megtalálásában.
+            </p>
+            <p className="mt-8 font-serif text-2xl italic leading-relaxed md:text-[1.7rem]">
+              A templomtól a malomhoz, majd az este folyamán az etyeki szállásokhoz és Budapestre is
+              biztosítunk transzfert. Az indulási időpontokat később tesszük közzé.
+            </p>
           </div>
         </section>
 
