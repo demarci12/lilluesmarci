@@ -108,7 +108,6 @@ export default function Home() {
               <SplitNames />
               <div className="lm-rule lm-fade" style={{ "--d": ".8s" } as React.CSSProperties} />
               <p className="lm-date lm-fade" style={{ "--d": ".9s" } as React.CSSProperties}>2027. július 10., szombat</p>
-              <p className="lm-place lm-fade" style={{ "--d": "1s" } as React.CSSProperties}>Etyeki templom → Kálna Mátyás Malom</p>
               <p className="lm-rot lm-fade" style={{ "--d": "1.05s" } as React.CSSProperties}>
                 Gyertek, és{" "}
                 <span className="text-rotate duration-[7.5s]">

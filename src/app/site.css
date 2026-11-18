@@ -131,9 +131,8 @@ html {
 .lm-amp { color: var(--gold); }
 .lm-date { margin-top: 30px; font-family: var(--font-serif); font-size: clamp(2.1rem, 4.6vw, 3.2rem); line-height: 1; }
 .lm-rule { width: 64px; height: 1px; margin-top: 22px; background: var(--gold); }
-.lm-place { margin-top: 16px; font-size: 19px; font-weight: 700; color: var(--olive-text); }
-.lm-rot { margin-top: 10px; font-size: 20px; color: var(--muted); }
-.lm-rot .text-rotate { color: var(--olive-text); font-weight: 700; }
+.lm-rot { margin-top: 22px; font-family: var(--font-serif); font-size: clamp(1.9rem, 3.8vw, 2.7rem); line-height: 1.15; color: var(--ink); }
+.lm-rot .text-rotate { color: var(--olive-text); }
 .lm-actions { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
 .lm-textlink { font-weight: 700; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 6px; }
 .lm-fade { opacity: 0; transform: translateY(16px); animation: lm-rise 1s var(--ease) forwards; animation-delay: var(--d, 0.8s); }
