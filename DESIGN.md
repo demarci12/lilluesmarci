@@ -3,17 +3,17 @@
 name: Lilu & Marci — Toszkán old money
 description: Sunlit, calm Tuscan old-money invitation — linen beige, cream cards, sage and olive, gold only as a hairline detail; poster-scale names, very readable body.
 colors:
-  ground: "#E9DEC6"        # page background (homokbézs) — the one background
+  ground: "#FDFBF7"        # page background (near-white) — the one background
   cream: "#F7EFDB"         # cards, form surface, sun disc
   sand: "#D5C7AC"          # hairlines, chips, quiet fills
   sage: "#8E9B6D"          # transfer board, soft accent fills (ink text on it)
   olive: "#66754C"         # decorative olive (illustration, large display only)
   olive-text: "#4F5C39"    # small olive text, primary buttons (AA on ground and cream)
-  dusk: "#5A6843"          # the dark panel (RSVP), cream text on it
+  dusk: "#5A6843"          # spare dark olive (not used as a surface now)
   text: "#2B2E22"
   text-muted: "#57554A"
-  on-dark: "#F7EFDB"
-  on-dark-muted: "#EDE6D0"
+  on-dark: "#FFFDF8"       # text on olive (4.8:1)
+  on-dark-muted: "#FFFDF8"
   gold: "#A88A4C"          # detail only: the "&", hairlines, the sun ring — never a surface
   error: "#9E4A33"
 typography:
@@ -79,12 +79,12 @@ components:
 **Product context:** single-page Hungarian wedding invitation for Lilla & Marton (2027. július 10., Etyeki templom → Kálna Mátyás Malom). Guests of every age, mostly on phones from the invite link.
 **Mode per surface:** hero = Experience; program, locations, transfers, FAQ = Read; RSVP = Operate.
 **Reference:** the bride's palette board (cream, sand beige, sage, olive), minimal.gallery for confidence and whitespace.
-**Key characteristics:** one beige background; huge upright serif names; arched photo windows; a cream sun moving with the scroll; 18px body everywhere.
+**Key characteristics:** one near-white background; huge upright serif names; an arched photo window in the hero only (everywhere else rounded rectangles); a cream sun moving with the scroll; 18px body everywhere.
 
 ## Colors
 
-**Strategy:** Restrained-committed — the olive family owns the page, beige and cream carry it, gold is a hairline detail.
-**Light or dark:** light. Guests read it in daylight on phones; the only dark surface is the RSVP panel.
+**Strategy:** Fixed palette, no scroll colour shifts. Near-white page; the bride's four colours are the boxes: cream (countdown, chips, location cards, team, form), sand (accommodation), sage (transfer board), olive (RSVP panel). Gold stays a hairline detail.
+**Light or dark:** light. Guests read it in daylight on phones; the only dark surface is the olive RSVP panel. Text on sand and sage is ink (olive-text fails 4.5:1 there).
 `olive-text` is the interactive colour (buttons, small labels, links). `olive` (#66754C) is the bride's board colour but fails 4.5:1 for small text on cream, so it is used for large display and illustration only. On `sage` and `cream` text is always `text` (ink). Gold never fills an area: the "&" in the names, 1px rules, the sun's ring.
 
 ## Typography
@@ -101,7 +101,7 @@ Flat by default. Cards lift 4px with a soft offset shadow on hover (`0 30px 60px
 
 ## Shapes
 
-Big soft radii: 28px cards, 16px images, 999px pills for buttons and chips, arch (`999px 999px 28px 28px`) for hero/church/gallery photos — a nod to church and mill windows.
+Big soft radii: 28px cards, 16px images, 999px pills for buttons and chips, arch (`999px 999px 28px 28px`) for the hero photo only — a nod to church and mill windows; every other photo is a 16px rounded rectangle.
 
 ## Components
 
@@ -130,4 +130,5 @@ daisyUI 5, theme `lilu` (globals.css), shared with /admin: `btn` (primary/outlin
 |------|----------|-----------|
 | 2026-11-18 | Initial design system created | /design-consultation with Codex + Claude outside voices; HTML previews v1–v5 |
 | 2026-11-18 | Brick removed, dress-code section removed, quiz section removed | Couple feedback |
+| 2026-11-18 | Near-white page (#FDFBF7), fixed colours; the four board colours as boxes; arch only in the hero | Bride: whiter background, no colour transition, no arches lower down |
 | 2026-11-18 | Gold demoted to detail; palette L from the bride's board (cream, sand, sage, olive) on beige | Bride preferred pastel greens, Tuscan old-money mood |

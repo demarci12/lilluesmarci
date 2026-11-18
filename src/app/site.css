@@ -2,7 +2,7 @@
    never collides with daisyUI component names (daisyUI is global for /admin). */
 
 .lm {
-  --ground: #e9dec6;
+  --ground: #fdfbf7;      /* page background: near-white */
   --cream: #f7efdb;
   --sand: #d5c7ac;
   --sage: #8e9b6d;
@@ -11,8 +11,8 @@
   --dusk: #5a6843;
   --ink: #2b2e22;
   --muted: #57554a;
-  --on-dark: #f7efdb;
-  --on-dark-muted: #ede6d0;
+  --on-dark: #fffdf8;     /* 4.8:1 on olive #66754C */
+  --on-dark-muted: #fffdf8;
   --gold: #a88a4c;
   --line: rgb(43 46 34 / 12%);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -65,6 +65,13 @@ html {
 @media (min-width: 900px) { .lm-section { padding: 128px 0; } }
 .lm-head { display: grid; gap: 18px; margin-bottom: 56px; }
 @media (min-width: 900px) { .lm-head { grid-template-columns: 1fr 1fr; align-items: end; } }
+
+/* keyboard focus: visible on every link and control */
+.lm a:focus-visible, .lm summary:focus-visible, .lm .collapse:has(input:focus-visible) {
+  outline: 2px solid var(--olive-text);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
 
 /* daisyUI buttons: just the arrow nudge */
 .lm .btn { font-size: 17px; font-weight: 700; }
@@ -219,7 +226,6 @@ html {
   .lm-place-card.is-flip { grid-template-columns: 0.85fr 1.15fr; padding: 22px 22px 22px 56px; }
   .lm-place-card.is-flip > figure { order: 2; }
 }
-.lm-place-card .lm-arch { border-radius: 999px 999px var(--r-md) var(--r-md); }
 .lm-wide { position: relative; overflow: hidden; margin: 0; aspect-ratio: 4 / 3; border-radius: var(--r-md); }
 .lm-place-body { padding: 6px 10px 18px; }
 .lm-place-name { margin: 8px 0 12px; font-size: clamp(2.3rem, 4.6vw, 3.4rem); line-height: 1.05; }
@@ -245,6 +251,9 @@ html {
 @media (min-width: 900px) { .lm-duo { grid-template-columns: 1fr 1fr; } }
 .lm-soft { padding: 32px; border-radius: var(--r-lg); background: var(--cream); }
 .lm-soft h3 { margin: 8px 0 12px; }
+/* sand box: olive-text and muted fail 4.5:1 on sand, so text goes ink */
+.lm-soft.is-sand { background: var(--sand); }
+.lm-soft.is-sand .lm-label, .lm-soft.is-sand .lm-muted { color: var(--ink); }
 .lm-person { display: grid; grid-template-columns: 76px 1fr; gap: 18px; align-items: center; margin-top: 16px; }
 .lm-person .lm-ph { display: grid; place-items: center; width: 76px; height: 76px; border-radius: 50%; background: var(--ground); font-family: var(--font-serif); font-size: 38px; color: var(--olive-text); }
 
@@ -270,7 +279,7 @@ html {
 }
 .lm-strip::-webkit-scrollbar { display: none; }
 .lm-strip figure { scroll-snap-align: center; }
-.lm-strip img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 999px 999px var(--r-md) var(--r-md); }
+.lm-strip img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--r-md); }
 .lm-strip figcaption { margin-top: 12px; font-family: var(--font-serif); font-size: 24px; }
 
 /* ---------- FAQ (daisyUI collapse) ---------- */
@@ -281,7 +290,7 @@ html {
 .lm-faq .collapse-content { padding-inline: 0 56px; color: var(--muted); }
 
 /* ---------- RSVP ---------- */
-.lm-rsvp { display: grid; gap: 32px; padding: 28px; border-radius: var(--r-lg); background: var(--dusk); color: var(--on-dark); }
+.lm-rsvp { display: grid; gap: 32px; padding: 28px; border-radius: var(--r-lg); background: var(--olive); color: var(--on-dark); }
 @media (min-width: 900px) { .lm-rsvp { grid-template-columns: 0.9fr 1.1fr; gap: 56px; padding: 56px; } }
 .lm-rsvp .lm-lead { color: var(--on-dark-muted); }
 .lm-rsvp-title { font-size: clamp(3.4rem, 10vw, 6.4rem); line-height: 0.9; }

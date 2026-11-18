@@ -268,7 +268,7 @@ export default function Home() {
 
       <section id="szallas" className="lm-section !pt-0" data-sun="120 90 .7">
         <div className="lm-wrap lm-duo">
-          <div className="lm-soft lm-reveal">
+          <div className="lm-soft is-sand lm-reveal">
             <p className="lm-label">Szállás</p>
             <h3 className="lm-h3">Etyeken, a közelben</h3>
             <p className="lm-muted">
