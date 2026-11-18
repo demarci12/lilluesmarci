@@ -1,16 +1,18 @@
 import Image from "next/image";
 import Envelope from "@/components/wedding/Envelope";
 import OliveBranch from "@/components/wedding/OliveBranch";
-import Quiz from "@/components/wedding/Quiz";
 import Reveal from "@/components/wedding/Reveal";
 import RsvpForm from "@/components/wedding/RsvpForm";
 
+// Main guest-facing points only (the couple's own prep, buffers and photo slots stay off).
 const timeline = [
-  { time: "01", text: "Templomi szertartás", detail: "A napot az etyeki templomban kezdjük. A pontos kezdési időpontot a meghívóval együtt küldjük." },
-  { time: "02", text: "Transzfer a malomhoz", detail: "A szertartás után közös transzfert biztosítunk a Kálna Mátyás Malomhoz." },
-  { time: "03", text: "Vacsora", detail: "Megérkezés után koccintunk, majd közösen elfogyasztjuk az ünnepi vacsorát." },
-  { time: "04", text: "Buli", detail: "A vacsora után felkapcsoljuk a fényfüzéreket, és együtt ünneplünk hajnalig." },
-  { time: "05", text: "Transzfer haza", detail: "Az este folyamán több indulással biztosítunk transzfert az etyeki szállásokhoz és Budapestre is." },
+  { time: "15:00", text: "Templomi szertartás", detail: "Az etyeki templomban. Kérjük, 14:50-re érkezzetek." },
+  { time: "16:10", text: "Transzfer a malomhoz", detail: "Közös transzfer a templomtól a Kálna Mátyás Malomhoz." },
+  { time: "16:40", text: "Vendégváró", detail: "Megérkezés után koccintunk." },
+  { time: "19:30", text: "Vacsora", detail: "Közösen elfogyasztjuk az ünnepi vacsorát." },
+  { time: "22:15", text: "Első tánc", detail: "Utána felkapcsoljuk a fényfüzéreket." },
+  { time: "22:30", text: "Buli", detail: "Együtt ünneplünk hajnalig." },
+  { time: "0:00", text: "Torta", detail: "Éjfélkor jön a torta." },
 ];
 
 // Wedding-party slots are still Figma-export placeholders until real shots exist.
@@ -173,34 +175,10 @@ export default function Home() {
           <OliveBranch className="botanical-float absolute -right-28 top-[38%] w-[340px] rotate-[-72deg] text-[#83886b] opacity-30 md:w-[500px]" />
         </section>
 
-        <section className="bg-[#34392d] px-6 py-20 text-[#f2eee4] md:px-12 md:py-28 lg:px-20">
-          <div className="mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-12">
-            <div data-reveal className="reveal lg:col-span-5">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#b8bda4]">II — Játék</p>
-              <h2 className="mt-10 font-serif text-7xl font-light leading-[0.82] tracking-[-0.045em] md:text-9xl">
-                Ismerj meg<br /><span className="italic text-[#c9cdb4]">minket!</span>
-              </h2>
-              <p className="mt-10 max-w-sm text-sm leading-7 text-[#c5c7bb]">
-                Mennyire ismertek bennünket? Tippeljetek – a megfejtéseket az esküvőn eláruljuk.
-              </p>
-              <figure className="image-reveal reveal relative mt-14 aspect-[4/5] max-w-sm overflow-hidden" data-reveal>
-                <Image
-                  src="/images/engagement-carry.jpg"
-                  alt="Marton a vállán viszi Lillát, mindketten nevetnek"
-                  fill
-                  sizes="(max-width: 1024px) 90vw, 384px"
-                  className="object-cover"
-                />
-              </figure>
-            </div>
-            <Quiz />
-          </div>
-        </section>
-
         <section id="details" className="relative bg-[#f3efe5] px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto max-w-[1400px]">
             <div data-reveal className="reveal grid gap-10 md:grid-cols-12">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56] md:col-span-3">III — Mentsd el a dátumot</p>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56] md:col-span-3">II — Mentsd el a dátumot</p>
               <h2 className="font-serif text-6xl font-light leading-[0.85] tracking-[-0.04em] md:col-span-9 md:text-9xl">
                 Egy nyári nap<br /><span className="italic">Etyeken.</span>
               </h2>
@@ -209,8 +187,8 @@ export default function Home() {
             <div className="mt-16 grid border-y border-[#73785f]/40 md:grid-cols-3">
               {[
                 ["Mikor", "Szombat", "2027. július 10."],
-                ["Szertartás", "Etyeki templom", "A pontos kezdési időpont hamarosan"],
-                ["Vacsora és buli", "Kálna Mátyás Malom", "Transzferrel a templomtól"],
+                ["Szertartás", "Etyeki templom", "15:00-kor kezdődik"],
+                ["Vacsora és buli", "Kálna Mátyás Malom", "16:10-kor transzfer a templomtól"],
               ].map(([label, title, detail]) => (
                 <div data-reveal key={label} className="reveal border-b border-[#73785f]/40 py-12 md:border-b-0 md:border-r md:px-10 md:last:border-r-0">
                   <p className="text-[9px] uppercase tracking-[0.32em] text-[#73785f]">{label}</p>
@@ -242,49 +220,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-[#353a2f] px-6 py-20 text-[#f2eee4] md:px-12 md:py-28 lg:px-20">
-          <div className="mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-12">
-            <div data-reveal className="reveal lg:col-span-5">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#b8bda4]">IV — Mit vegyek fel?</p>
-              <h2 className="mt-10 font-serif text-7xl font-light leading-[0.82] tracking-[-0.045em] md:text-9xl">
-                Dress<br /><span className="italic text-[#c9cdb4]">code</span>
-              </h2>
-              <p className="mt-10 max-w-md text-sm leading-7 text-[#c8cabf]">
-                Kerti elegáns öltözetet ajánlunk. Gondoljatok könnyű anyagokra, természetes
-                textúrákra és a nyári táj visszafogott árnyalataira.
-              </p>
-              <div className="mt-10 flex gap-4" aria-label="Ajánlott színpaletta">
-                {["#e8dfce", "#c6ad87", "#9a9271", "#697052", "#6b5548"].map((color) => (
-                  <span key={color} className="h-12 w-12 rounded-full border border-white/20" style={{ backgroundColor: color }} />
-                ))}
-              </div>
-              <div className="mt-12 grid gap-8 border-t border-[#aeb39a]/30 pt-8 sm:grid-cols-2">
-                <div>
-                  <p className="text-[9px] uppercase tracking-[0.3em] text-[#b8bda4]">Ajánljuk</p>
-                  <p className="mt-3 font-serif text-2xl italic">Olíva, homok, terrakotta</p>
-                </div>
-                <div>
-                  <p className="text-[9px] uppercase tracking-[0.3em] text-[#b8bda4]">Kérjük, kerüld</p>
-                  <p className="mt-3 font-serif text-2xl italic">Fehér és neon árnyalatok</p>
-                </div>
-              </div>
-            </div>
-            <figure data-reveal className="image-reveal reveal relative aspect-[4/5] overflow-hidden lg:col-span-6 lg:col-start-7">
-              <Image
-                src="/images/engagement-grass.jpg"
-                alt="Lilla és Marton a fűben, nyári földszínekben"
-                fill
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                className="object-cover"
-              />
-            </figure>
-          </div>
-        </section>
-
-        <section id="megkozelites" className="bg-[#f3efe5] px-6 py-20 md:px-12 md:py-28 lg:px-20">
+        <section id="megkozelites" className="bg-[#e4dfd1] px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto max-w-[1400px]">
             <header data-reveal className="reveal grid gap-10 md:grid-cols-12">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56] md:col-span-3">V — Megközelítés</p>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56] md:col-span-3">III — Megközelítés</p>
               <h2 className="font-serif text-7xl font-light leading-[0.82] tracking-[-0.045em] md:col-span-9 md:text-9xl">
                 Hogyan juttok<br /><span className="italic">el hozzánk?</span>
               </h2>
@@ -336,7 +275,7 @@ export default function Home() {
         <section id="szallas" className="bg-[#d8d1c1] px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto grid max-w-[1400px] items-start gap-16 md:grid-cols-12">
             <div data-reveal className="reveal md:col-span-5">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">VI — Pihenés</p>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">IV — Pihenés</p>
               <h2 className="mt-10 font-serif text-7xl font-light leading-[0.82] tracking-[-0.045em] md:text-9xl">
                 Szállás<br /><span className="italic">a közelben.</span>
               </h2>
@@ -373,7 +312,7 @@ export default function Home() {
         <section className="bg-[#f3efe5] px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto max-w-[1400px]">
             <header data-reveal className="reveal mx-auto max-w-4xl text-center">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">VII — Akik mellettünk állnak</p>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">V — Akik mellettünk állnak</p>
               <h2 className="mt-10 font-serif text-7xl font-light leading-[0.85] tracking-[-0.045em] md:text-9xl">
                 A mi <span className="italic">csapatunk</span>
               </h2>
@@ -439,14 +378,14 @@ export default function Home() {
         <section id="gyik" className="bg-[#e4dfd1] px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto grid max-w-[1400px] gap-16 md:grid-cols-12">
             <header data-reveal className="reveal md:col-span-5">
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">VIII — Hasznos tudnivalók</p>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[#676c56]">VI — Hasznos tudnivalók</p>
               <h2 className="mt-10 font-serif text-7xl font-light leading-[0.82] tracking-[-0.045em] md:text-9xl">
                 Gyakori<br /><span className="italic">kérdések</span>
               </h2>
             </header>
             <div data-reveal className="reveal md:col-span-6 md:col-start-7">
               {[
-                ["Mikor és hol lesz az esküvő?", "2027. július 10-én, szombaton találkozunk. A szertartás az etyeki templomban, a vacsora és a buli pedig a Kálna Mátyás Malomban lesz."],
+                ["Mikor és hol lesz az esküvő?", "2027. július 10-én, szombaton találkozunk. A szertartás 15:00-kor kezdődik az etyeki templomban, a vacsora és a buli pedig a Kálna Mátyás Malomban lesz."],
                 ["Hogyan jutunk el a templomtól a helyszínre?", "A templomi szertartás után transzfert biztosítunk a Kálna Mátyás Malomhoz, így az autót nyugodtan a szállásnál hagyhatjátok."],
                 ["Lesz transzfer az este végén?", "Igen. Az este folyamán több időpontban indul transzfer az etyeki szállásokhoz, valamint Budapestre is. A pontos menetrendet később osztjuk meg."],
                 ["Hol érdemes szállást foglalni?", "Etyeken érdemes szállást keresni. Mivel júliusban gyorsan betelnek a környék szálláshelyei, javasoljuk, hogy időben foglaljatok."],
@@ -470,7 +409,7 @@ export default function Home() {
           <div className="absolute inset-0 -z-10 bg-[#2f342a]/85" />
           <div className="mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-12">
             <header data-reveal className="reveal lg:col-span-5">
-              <p className="text-[10px] uppercase tracking-[0.4em] text-[#d0d3c3]">IX — Visszajelzés</p>
+              <p className="text-[10px] uppercase tracking-[0.4em] text-[#d0d3c3]">VII — Visszajelzés</p>
               <Envelope />
               <p className="mt-10 max-w-md text-sm leading-7 text-[#d9dbd1]">
                 Kérjük, töltsétek ki az űrlapot, hogy tudjuk, számíthatunk-e rátok, illetve kértek-e szállást vagy transzfert.
