@@ -1,3 +1,5 @@
+import Crest from "./Crest";
+
 // RSVP envelope: when its `[data-reveal]` parent scrolls into view (Reveal adds
 // `.is-visible`), the flap opens, the wax seal lifts and the letter slides up.
 // The letter holds the section's real heading, so it reads fine without motion.
@@ -17,7 +19,7 @@ export default function Envelope() {
         <path d="M0 0 L300 0 L150 116 Z" />
       </svg>
       <span className="env-seal" aria-hidden="true">
-        L<span>&amp;</span>M
+        <Crest className="crest h-[52px] w-[52px]" />
       </span>
     </div>
   );
