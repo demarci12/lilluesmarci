@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Crest from "@/components/wedding/Crest";
 import Envelope from "@/components/wedding/Envelope";
 import Reveal from "@/components/wedding/Reveal";
+import RouteMap from "@/components/wedding/RouteMap";
 import RsvpForm from "@/components/wedding/RsvpForm";
 
 // Main guest-facing points only (the couple's own prep, buffers and photo slots stay off).
@@ -9,26 +11,24 @@ const timeline = [
   { time: "16:10", text: "Transzfer", place: "A templomtól a malomhoz" },
   { time: "16:40", text: "Vendégváró", place: "Kálna Mátyás Malom" },
   { time: "19:30", text: "Vacsora", place: "Kálna Mátyás Malom" },
-  { time: "22:15", text: "Első tánc", place: "Kálna Mátyás Malom" },
-  { time: "22:30", text: "Buli", place: "Hajnalig" },
-  { time: "0:00", text: "Torta", place: "Éjfélkor" },
+  { time: "1:00", text: "Menyasszonytánc", place: "Kálna Mátyás Malom" },
 ];
 
 const gallery = [
-  { src: "/images/engagement-ring.jpg", alt: "Lilla a gyűrűjét mutatja" },
-  { src: "/images/engagement-lift.jpg", alt: "Marton felemeli Lillát" },
-  { src: "/images/engagement-chapel.jpg", alt: "Lilla és Marton a kápolna mellett" },
-  { src: "/images/engagement-carry.jpg", alt: "Marton a vállán viszi Lillát" },
+  { src: "/images/engagement-ring.jpg", alt: "Lilu a gyűrűjét mutatja" },
+  { src: "/images/engagement-lift.jpg", alt: "Marci felemeli Lilut" },
+  { src: "/images/engagement-chapel.jpg", alt: "Lilu és Marci a kápolna mellett" },
+  { src: "/images/engagement-carry.jpg", alt: "Marci a vállán viszi Lilut" },
 ];
 
 // Opening slideshow: black-and-white and colour shots alternate.
 const ribbon = [
-  { src: "/images/engagement-lift.jpg", alt: "Marton felemeli Lillát a naplementében", mono: true },
-  { src: "/images/engagement-ring.jpg", alt: "Lilla a gyűrűjét mutatja", mono: false },
-  { src: "/images/engagement-grass.jpg", alt: "Lilla és Marton a fűben", mono: true },
-  { src: "/images/engagement-carry.jpg", alt: "Marton a vállán viszi Lillát", mono: false },
-  { src: "/images/engagement-chapel.jpg", alt: "Lilla és Marton a kápolna mellett", mono: true },
-  { src: "/images/about.jpg", alt: "Lilla és Marton meghitt pillanata", mono: false },
+  { src: "/images/engagement-lift.jpg", alt: "Marci felemeli Lilut a naplementében", mono: true },
+  { src: "/images/engagement-ring.jpg", alt: "Lilu a gyűrűjét mutatja", mono: false },
+  { src: "/images/engagement-grass.jpg", alt: "Lilu és Marci a fűben", mono: true },
+  { src: "/images/engagement-carry.jpg", alt: "Marci a vállán viszi Lilut", mono: false },
+  { src: "/images/engagement-chapel.jpg", alt: "Lilu és Marci a kápolna mellett", mono: true },
+  { src: "/images/about.jpg", alt: "Lilu és Marci meghitt pillanata", mono: false },
 ];
 
 export default function Home() {
@@ -40,7 +40,7 @@ export default function Home() {
         <section className="wed-hero bg-[#fbf7ee]">
           <header className="intro intro-1 px-6 pb-6 pt-10 text-center md:pt-12">
             <h1 className="font-serif text-[2rem] font-normal uppercase tracking-[0.14em] text-[#292c26] md:text-[2.6rem]">
-              Lilla &amp; Marton
+              Lilu &amp; Marci
             </h1>
             <p className="mt-2 text-[11px] uppercase tracking-[0.42em] text-[#5f6650]">2027. július 10. · Etyek</p>
             <nav aria-label="Fő navigáció" className="mt-6 flex flex-wrap justify-center gap-x-7 gap-y-2 text-[15px] text-[#3d4230]">
@@ -85,19 +85,22 @@ export default function Home() {
               </h2>
             </header>
 
-            {/* Itinerary: small-caps title, italic place and time, no boxes. */}
-            <ol data-reveal className="reveal mx-auto mt-14 flex max-w-[1100px] flex-wrap justify-center gap-x-6 gap-y-12">
+            {/* Itinerary: five moments in one row (stacked on phones), gold hairlines between. */}
+            <ol data-reveal className="reveal itinerary mx-auto mt-16 grid max-w-[1180px] md:grid-cols-5">
               {timeline.map((item) => (
-                <li key={item.time} className="w-[44%] text-center sm:w-[30%] lg:w-[22%]">
+                <li key={item.time} className="itin-item">
+                  <p className="itin-time">{item.time}</p>
+                  <span className="itin-rule" aria-hidden="true" />
                   <h3 className="itin-title">{item.text}</h3>
-                  <p className="mt-3 font-serif text-xl italic text-[#56594c]">{item.place}</p>
-                  <p className="mt-1 font-serif text-xl italic text-[#6f7a3a]">{item.time}</p>
+                  <p className="itin-place">{item.place}</p>
                 </li>
               ))}
             </ol>
-            <p data-reveal className="reveal mx-auto mt-14 max-w-xl text-center text-sm text-[#56594c]">
-              Kérjük, 14:50-re érkezzetek a templomhoz.
-            </p>
+            <div data-reveal className="reveal arrival" role="note">
+              <span className="arrival-label">Érkezés a templomhoz</span>
+              <span className="arrival-time">14:45</span>
+              <span className="arrival-note">Kérjük, legkésőbb 14:45-re érjetek oda, hogy 15:00-kor nyugodtan kezdhessünk.</span>
+            </div>
           </div>
         </section>
 
@@ -123,11 +126,24 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <div data-reveal className="reveal mt-10 flex flex-wrap items-center justify-center gap-4">
+              <a className="cal-btn" href="/lilu-es-marci-eskuvo.ics" download>
+                Mentés a naptárba
+              </a>
+              <a
+                className="cal-btn is-ghost"
+                href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Lilu%20%26%20Marci%20esk%C3%BCv%C5%91je&dates=20270710T130000Z%2F20270711T020000Z&location=Etyeki%20templom%2C%20Etyek&details=%C3%89rkez%C3%A9s%2014%3A45-re!%2015%3A00%20szertart%C3%A1s%20az%20etyeki%20templomban%2C%20ut%C3%A1na%20vacsora%20%C3%A9s%20buli%20a%20K%C3%A1lna%20M%C3%A1ty%C3%A1s%20Malomban.%20https%3A%2F%2Fliluesmarci.hu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Naptár
+              </a>
+            </div>
             <div className="mt-16 grid items-end gap-6 md:grid-cols-12">
               <figure data-reveal className="reveal oval-photo relative mx-auto aspect-[3/4] w-[78%] overflow-hidden md:col-span-5 md:w-full">
                 <Image
                   src="/images/engagement-lift.jpg"
-                  alt="Marton felemeli Lillát a naplementében"
+                  alt="Marci felemeli Lilut a naplementében"
                   fill
                   sizes="(max-width: 768px) 100vw, 40vw"
                   className="object-cover"
@@ -137,13 +153,13 @@ export default function Home() {
                 <div className="relative aspect-square overflow-hidden">
                   <Image
                     src="/images/engagement-chapel.jpg"
-                    alt="Lilla és Marton a fűben ülnek, mögöttük egy kápolna"
+                    alt="Lilu és Marci a fűben ülnek, mögöttük egy kápolna"
                     fill
                     sizes="(max-width: 768px) 70vw, 30vw"
                     className="object-cover object-[50%_45%] grayscale"
                   />
                 </div>
-                <figcaption className="polaroid-note">Lilla &amp; Marton</figcaption>
+                <figcaption className="polaroid-note">Lilu &amp; Marci</figcaption>
               </figure>
             </div>
           </div>
@@ -157,6 +173,10 @@ export default function Home() {
                 Hogyan juttok<br /><span className="italic">el hozzánk?</span>
               </h2>
             </header>
+
+            <div data-reveal className="reveal mt-14">
+              <RouteMap />
+            </div>
 
             <div className="mt-16 grid border-y border-[#73785f]/40 md:grid-cols-3">
               <article data-reveal className="reveal border-b border-[#73785f]/40 py-12 md:border-r md:border-b-0 md:px-10">
@@ -257,7 +277,7 @@ export default function Home() {
             </header>
             <div data-reveal className="reveal md:col-span-6 md:col-start-7">
               {[
-                ["Mikor és hol lesz az esküvő?", "2027. július 10-én, szombaton találkozunk. A szertartás 15:00-kor kezdődik az etyeki templomban, a vacsora és a buli pedig a Kálna Mátyás Malomban lesz."],
+                ["Mikor és hol lesz az esküvő?", "2027. július 10-én, szombaton találkozunk. A szertartás 15:00-kor kezdődik az etyeki templomban (kérjük, 14:45-re érkezzetek), a vacsora és a buli pedig a Kálna Mátyás Malomban lesz."],
                 ["Hogyan jutunk el a templomtól a helyszínre?", "A templomi szertartás után transzfert biztosítunk a Kálna Mátyás Malomhoz, így az autót nyugodtan a szállásnál hagyhatjátok."],
                 ["Lesz transzfer az este végén?", "Igen. Az este folyamán több időpontban indul transzfer az etyeki szállásokhoz, valamint Budapestre is. A pontos menetrendet később osztjuk meg."],
                 ["Hol érdemes szállást foglalni?", "Etyeken érdemes szállást keresni. Mivel júliusban gyorsan betelnek a környék szálláshelyei, javasoljuk, hogy időben foglaljatok."],
@@ -293,10 +313,10 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="flex flex-col items-center justify-between gap-8 bg-[#4f5a33] px-8 py-10 text-[9px] uppercase tracking-[0.3em] text-[#eef1e2] md:flex-row">
-          <span>Lilla &amp; Marton</span>
-          <span className="font-serif text-xl normal-case tracking-normal italic">Szeretettel, Etyekről</span>
-          <span>10 · 07 · 2027</span>
+        <footer className="flex flex-col items-center gap-5 bg-[#3f4829] px-8 pb-12 pt-14 text-center text-[#eef1e2]">
+          <Crest className="crest h-28 w-28 text-[#eef1e2]" title="Lilu és Marci monogramja" />
+          <p className="font-script text-4xl">Szeretettel, Lilu &amp; Marci</p>
+          <p className="text-[10px] uppercase tracking-[0.3em] text-[#d6dcc2]">2027. július 10. · Etyek</p>
         </footer>
       </main>
     </div>

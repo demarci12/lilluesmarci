@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//liluesmarci.hu//Eskuvo//HU
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:eskuvo-20270710@liluesmarci.hu
+DTSTAMP:20261119T000000Z
+DTSTART:20270710T130000Z
+DTEND:20270711T020000Z
+SUMMARY:Lilu & Marci esküvője
+LOCATION:Etyeki templom\, Etyek
+DESCRIPTION:Érkezés 14:45-re! 15:00 templomi szertartás az etyeki templomban\, utána vacsora és buli a Kálna Mátyás Malomban. Részletek: https://liluesmarci.hu
+URL:https://liluesmarci.hu
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Holnap esküvő: Lilu & Marci
+END:VALARM
+END:VEVENT
+END:VCALENDAR
